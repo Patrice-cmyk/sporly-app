@@ -2,7 +2,7 @@
   "name": "Sporly - Assistant Fitness",
   "short_name": "Sporly",
   "description": "Application de sport interactive avec assistant vocal",
-  "start_url": "/",
+  "start_url": "/sporly-app/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1e40af",
