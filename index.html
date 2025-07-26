@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sporly - Assistant Fitness</title>
-    <!-- PWA Meta Tags -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Sporly">
-<meta name="theme-color" content="#1e40af">
-
-<!-- Manifest -->
-<link rel="manifest" href="manifest.json">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -103,15 +95,15 @@
         .dark-mode .nav-icon:hover { background: rgba(59, 130, 246, 0.2); }
         
         .main-content {
-            padding: 20px;
+            padding: 10px;
             background: #f8fafc;
-            min-height: calc(100vh - 80px);
+            min-height: calc(100vh - 65px);
             transition: all 0.3s ease;
         }
         
         .dark-mode .main-content { background: #1a1a1a; }
         
-        .assistant-container { position: relative; margin-bottom: 20px; }
+        .assistant-container { position: relative; margin-bottom: 10px; }
         
         .chat-single-line {
             display: flex;
@@ -119,50 +111,50 @@
             gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 12px 16px;
-            border-radius: 25px;
+            padding: 10px 14px;
+            border-radius: 20px;
             border: 2px solid rgba(30, 64, 175, 0.1);
             background: #ffffff;
-            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.05);
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.05);
         }
         
         .chat-single-line:hover {
             border-color: rgba(30, 64, 175, 0.2);
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.1);
+            box-shadow: 0 3px 12px rgba(30, 64, 175, 0.1);
             transform: translateY(-1px);
         }
         
         .dark-mode .chat-single-line {
             border: 2px solid rgba(59, 130, 246, 0.2);
             background: #2a2a2a;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         
         .chat-single-line.open {
             border-color: rgba(30, 64, 175, 0.3);
-            border-radius: 25px 25px 0 0;
+            border-radius: 20px 20px 0 0;
         }
         
         .chat-single-line.selected {
             background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(30, 64, 175, 0.05) 100%);
             border-color: rgba(249, 115, 22, 0.2);
-            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.1);
+            box-shadow: 0 3px 15px rgba(249, 115, 22, 0.1);
         }
         
         .chat-single-line.listening {
             border-color: rgba(249, 115, 22, 0.4);
-            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.2);
+            box-shadow: 0 3px 15px rgba(249, 115, 22, 0.2);
         }
         
         .mic-btn-single {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             border: none;
             border-radius: 50%;
             color: white;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -177,7 +169,7 @@
         
         @keyframes micPulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+            50% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
         
@@ -185,7 +177,7 @@
         
         .assistant-text {
             color: #64748b;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 400;
             transition: all 0.3s ease;
         }
@@ -194,13 +186,13 @@
         .dark-mode .assistant-text { color: #94a3b8; }
         
         .action-icon-right {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 12px;
             color: white;
             flex-shrink: 0;
             opacity: 0;
@@ -212,7 +204,7 @@
         
         .dropdown-arrow {
             color: #64748b;
-            font-size: 12px;
+            font-size: 10px;
             transition: all 0.3s ease;
             margin-left: auto;
         }
@@ -229,12 +221,12 @@
             background: #ffffff;
             border: 2px solid rgba(30, 64, 175, 0.1);
             border-top: none;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.1);
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             transition: all 0.3s ease;
         }
         
@@ -242,7 +234,7 @@
             background: #2a2a2a;
             border: 2px solid rgba(59, 130, 246, 0.2);
             border-top: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
         .assistant-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -250,27 +242,27 @@
         .dropdown-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
+            gap: 10px;
+            padding: 10px 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             border-bottom: 1px solid rgba(30, 64, 175, 0.05);
         }
         
         .dark-mode .dropdown-item { border-bottom: 1px solid rgba(59, 130, 246, 0.1); }
-        .dropdown-item:last-child { border-bottom: none; border-radius: 0 0 18px 18px; }
+        .dropdown-item:last-child { border-bottom: none; border-radius: 0 0 14px 14px; }
         .dropdown-item:hover { background: rgba(30, 64, 175, 0.05); }
         .dark-mode .dropdown-item:hover { background: rgba(59, 130, 246, 0.1); }
         
         .dropdown-icon {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            border-radius: 6px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 10px;
             color: white;
             flex-shrink: 0;
         }
@@ -279,7 +271,7 @@
         .dropdown-icon.green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
         .dropdown-icon.purple { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); }
         
-        .dropdown-text { flex: 1; color: #1e40af; font-size: 14px; font-weight: 500; }
+        .dropdown-text { flex: 1; color: #1e40af; font-size: 13px; font-weight: 500; }
         .dark-mode .dropdown-text { color: #3b82f6; }
         
         .chat-conversation {
@@ -290,14 +282,14 @@
             background: #ffffff;
             border: 2px solid rgba(30, 64, 175, 0.1);
             border-top: none;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.1);
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
             z-index: 15;
-            max-height: 300px;
+            max-height: 200px;
             overflow-y: auto;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             transition: all 0.3s ease;
         }
         
@@ -305,19 +297,19 @@
             background: #2a2a2a;
             border: 2px solid rgba(59, 130, 246, 0.2);
             border-top: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
         .chat-conversation.show { opacity: 1; visibility: visible; transform: translateY(0); }
         
         .chat-message {
-            padding: 12px 16px;
-            margin: 8px 12px;
-            border-radius: 15px;
-            font-size: 14px;
+            padding: 8px 12px;
+            margin: 6px 10px;
+            border-radius: 12px;
+            font-size: 12px;
             max-width: 85%;
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(8px);
             animation: messageAppear 0.4s ease forwards;
         }
         
@@ -326,7 +318,7 @@
         .chat-message.bot {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
-            margin-left: 12px;
+            margin-left: 10px;
             margin-right: auto;
         }
         
@@ -335,7 +327,7 @@
             border: 1px solid rgba(249, 115, 22, 0.2);
             color: #f97316;
             margin-left: auto;
-            margin-right: 12px;
+            margin-right: 10px;
             font-weight: 500;
         }
         
@@ -347,13 +339,13 @@
         .typing-indicator {
             display: flex;
             align-items: center;
-            gap: 4px;
-            padding: 12px 16px;
-            margin: 8px 12px;
+            gap: 3px;
+            padding: 8px 12px;
+            margin: 6px 10px;
             margin-right: auto;
-            max-width: 60px;
+            max-width: 50px;
             background: #f1f5f9;
-            border-radius: 15px;
+            border-radius: 12px;
             opacity: 0;
         }
         
@@ -361,8 +353,8 @@
         .typing-indicator.show { opacity: 1; animation: messageAppear 0.4s ease forwards; }
         
         .typing-dot {
-            width: 6px;
-            height: 6px;
+            width: 4px;
+            height: 4px;
             background: #64748b;
             border-radius: 50%;
             animation: typingDots 1.4s infinite;
@@ -374,40 +366,40 @@
         
         @keyframes typingDots {
             0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-            30% { transform: translateY(-8px); opacity: 1; }
+            30% { transform: translateY(-6px); opacity: 1; }
         }
         
         .stats-section {
             background: #ffffff;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.05);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.05);
             border: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
         }
         
         .dark-mode .stats-section {
             background: #2a2a2a;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(59, 130, 246, 0.1);
         }
         
         .stats-grid { display: flex; justify-content: space-around; }
         .stat-item { text-align: center; }
-        .stat-number { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+        .stat-number { font-size: 18px; font-weight: bold; margin-bottom: 3px; }
         .stat-number.orange { color: #f97316; }
         .stat-number.blue { color: #1e40af; }
         .stat-number.green { color: #10b981; }
-        .stat-label { font-size: 12px; color: #64748b; transition: all 0.3s ease; }
+        .stat-label { font-size: 11px; color: #64748b; transition: all 0.3s ease; }
         .dark-mode .stat-label { color: #94a3b8; }
         
         .big-map-section {
             background: #ffffff;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.05);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.05);
             border: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
             flex: 1;
@@ -415,27 +407,102 @@
         
         .dark-mode .big-map-section {
             background: #2a2a2a;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(59, 130, 246, 0.1);
         }
         
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: 600;
             color: #1e40af;
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            text-align: center;
         }
         
         .dark-mode .section-title { color: #3b82f6; }
         
+        .inline-legend {
+            display: flex;
+            gap: 8px;
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 500;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .dark-mode .inline-legend {
+            color: #94a3b8;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+            padding: 3px 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            font-size: 11px;
+        }
+        
+        .legend-item:hover {
+            background: rgba(30, 64, 175, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .legend-item.active {
+            background: rgba(30, 64, 175, 0.15);
+            border: 1px solid rgba(30, 64, 175, 0.2);
+            font-weight: 600;
+        }
+        
+        .dark-mode .legend-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .dark-mode .legend-item.active {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        /* États de filtrage - CORRIGÉS */
+        .filter-dispo .sport-pin:not(.disponible) {
+            opacity: 0.2;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+        
+        .filter-complet .sport-pin:not(.complet) {
+            opacity: 0.2;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+        
+        .filter-moi .sport-pin {
+            opacity: 0.2;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+        
+        .filter-moi .user-location {
+            opacity: 1 !important;
+            transform: scale(1.2) translate(-50%, -50%) !important;
+            pointer-events: auto !important;
+        }
+        
+        .filter-moi .pulse-ring {
+            opacity: 1 !important;
+            transform: scale(1.2) translate(-50%, -50%) !important;
+        }
+        
         .big-map-container {
-            height: 300px;
+            height: 170px;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 15px;
+            border-radius: 10px;
             position: relative;
             border: 2px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
@@ -445,6 +512,307 @@
         .dark-mode .big-map-container {
             background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
             border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* NOUVELLE ZONE DE DÉTAILS - ULTRA COMPACTE */
+        .details-section {
+            background: #ffffff;
+            border-radius: 10px;
+            margin-top: 8px;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.05);
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            transition: all 0.4s ease;
+            min-height: 50px;
+            opacity: 0.7;
+        }
+
+        .details-section.active {
+            opacity: 1;
+            box-shadow: 0 3px 15px rgba(30, 64, 175, 0.15);
+            border: 1px solid rgba(30, 64, 175, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .dark-mode .details-section {
+            background: #2a2a2a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .dark-mode .details-section.active {
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
+        }
+
+        .dark-mode .details-header {
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .details-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e40af;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .details-title {
+            color: #3b82f6;
+        }
+
+        .close-details {
+            width: 18px;
+            height: 18px;
+            border: none;
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 50%;
+            color: #1e40af;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .details-section.active .close-details {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .close-details:hover {
+            background: rgba(30, 64, 175, 0.2);
+            transform: scale(1.1);
+        }
+
+        .dark-mode .close-details {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .dark-mode .close-details:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .details-content {
+            padding: 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .default-message {
+            text-align: center;
+            color: #64748b;
+            font-size: 11px;
+            padding: 10px;
+            font-style: italic;
+        }
+
+        .dark-mode .default-message {
+            color: #94a3b8;
+        }
+
+        .activity-details {
+            display: grid;
+            gap: 10px;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .activity-icon.complet {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        .activity-info h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 3px;
+        }
+
+        .dark-mode .activity-info h3 {
+            color: #3b82f6;
+        }
+
+        .activity-meta {
+            font-size: 10px;
+            color: #64748b;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .dark-mode .activity-meta {
+            color: #94a3b8;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .details-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .detail-btn {
+            flex: 1;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .join-detail-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2);
+        }
+
+        .join-detail-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+        }
+
+        .waitlist-detail-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
+        }
+
+        .waitlist-detail-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
+        }
+
+        .full-detail-btn {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+            cursor: not-allowed;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .activity-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 4px;
+        }
+
+        .dark-mode .activity-info h3 {
+            color: #3b82f6;
+        }
+
+        .activity-meta {
+            font-size: 12px;
+            color: #64748b;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .dark-mode .activity-meta {
+            color: #94a3b8;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .details-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .detail-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .join-detail-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .join-detail-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .waitlist-detail-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+        }
+
+        .waitlist-detail-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .full-detail-btn {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+            cursor: not-allowed;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .big-map-container::before {
@@ -461,37 +829,42 @@
                 radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
         }
 
-        /* Pins de base - VERTS par défaut */
+        /* Pins plus petits pour gagner de l'espace */
         .sport-pin {
             position: absolute;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             background: #ffffff;
-            border: 3px solid #10b981;
+            border: 2px solid #10b981;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.5s ease;
+            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.3);
             z-index: 3;
         }
         
         .sport-pin:hover { 
-            transform: scale(1.2); 
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); 
+            transform: scale(1.15); 
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); 
         }
 
         /* Pins ROUGES pour matchs complets */
         .sport-pin.complet {
-            border: 3px solid #ef4444;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            border: 2px solid #ef4444;
+            box-shadow: 0 3px 12px rgba(239, 68, 68, 0.3);
         }
 
         .sport-pin.complet:hover {
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+        
+        /* Classe pour les pins disponibles */
+        .sport-pin.disponible {
+            /* Déjà stylé comme disponible par défaut */
         }
         
         .dark-mode .sport-pin {
@@ -499,212 +872,23 @@
             color: #ffffff;
         }
         
-        .sport-pin.active {
-            border-color: #10b981;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-            animation: pinPulse 2s infinite;
-        }
-
-        @keyframes pinPulse {
-            0% { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); transform: scale(1); }
-            50% { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.6), 0 0 30px rgba(16, 185, 129, 0.3); transform: scale(1.1); }
-            100% { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); transform: scale(1); }
-        }
-
-        /* Tooltips */
-        .sport-tooltip {
-            position: absolute;
-            top: -95px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #10b981;
-            color: white;
-            padding: 10px 12px;
-            border-radius: 12px;
-            font-size: 10px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            font-weight: 600;
-            min-width: 180px;
-            max-width: 200px;
-            text-align: left;
-            line-height: 1.4;
-            white-space: normal;
-            z-index: 100;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.25);
-        }
-
-        .sport-pin.complet .sport-tooltip {
-            background: #ef4444;
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.25);
-        }
-
-        .sport-pin .sport-tooltip.fixed {
-            opacity: 1 !important;
-            pointer-events: auto !important;
-            visibility: visible !important;
-            z-index: 1000 !important;
-            position: absolute !important;
-            top: 45% !important;
-            left: 50% !important;
-            right: auto !important;
-            bottom: auto !important;
-            transform: translate(-50%, -50%) !important;
-            max-width: 200px !important;
-            min-width: 180px !important;
-        }
-
-        .sport-tooltip.show-hover {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-5px);
-            pointer-events: none;
-        }
-
-        .sport-tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
-            border-top-color: #10b981;
-        }
-
-        .sport-pin.complet .sport-tooltip::after {
-            border-top-color: #ef4444;
-        }
-
-        .sport-tooltip.fixed::after {
-            display: none;
-        }
-
-        .sport-pin:hover .sport-tooltip:not(.fixed) {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-5px);
-        }
-
-        .tooltip-content {
-            margin-bottom: 8px;
-        }
-
-        .tooltip-actions {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .tooltip-btn {
-            flex: 1;
-            padding: 6px 8px;
-            border: none;
-            border-radius: 6px;
-            font-size: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3px;
-        }
-
-        .join-btn {
-            background: rgba(255, 255, 255, 0.9);
-            color: #10b981;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .join-btn:hover {
-            background: #ffffff;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(255, 255, 255, 0.4);
-        }
-
-        .full-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: not-allowed;
-        }
-
-        .waitlist-btn {
-            background: rgba(255, 255, 255, 0.9);
-            color: #ef4444;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .waitlist-btn:hover {
-            background: #ffffff;
-            transform: translateY(-1px);
-        }
-
-        .close-tooltip {
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 16px;
-            height: 16px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            font-size: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.7;
-            transition: all 0.2s ease;
-        }
-
-        .close-tooltip:hover {
-            opacity: 1;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .tooltip-timer {
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 0 0 12px 12px;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .timer-bar {
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            width: 100%;
-            border-radius: 0 0 12px 12px;
-            transform-origin: left;
-            animation: timerCountdown 15s linear forwards;
-        }
-
-        @keyframes timerCountdown {
-            from { transform: scaleX(1); }
-            to { transform: scaleX(0); }
-        }
-        
         .user-location {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 25px;
-            height: 25px;
+            width: 22px;
+            height: 22px;
             background: #3b82f6 !important;
-            border: 3px solid #ffffff !important;
+            border: 2px solid #ffffff !important;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 12px;
             color: white !important;
             z-index: 4;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4) !important;
         }
         
         .pulse-ring {
@@ -712,8 +896,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border: 2px solid #3b82f6 !important;
             border-radius: 50%;
             animation: pulseRing 2s infinite;
@@ -750,11 +934,12 @@
             visibility: visible;
             transform: translateX(-50%) translateY(0);
         }
-        
+
         @media (max-width: 480px) {
             .container { max-width: 100%; }
             .main-content { padding: 15px; }
             .big-map-container { height: 250px; }
+            .map-legend { gap: 15px; font-size: 11px; }
         }
     </style>
 </head>
@@ -821,6 +1006,7 @@
             </div>
 
             <div class="stats-section">
+            <div class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number orange">6</div>
@@ -838,115 +1024,61 @@
             </div>
 
             <div class="big-map-section">
-                <div class="section-title">🗺️ Aventures à proximité</div>
+                <div class="section-title">Aventures à proximité</div>
+                <div class="inline-legend">
+                    <span class="legend-item" data-filter="dispo" onclick="toggleFilter('dispo', this)">🟢 Dispo</span>
+                    <span class="legend-item" data-filter="complet" onclick="toggleFilter('complet', this)">🔴 Complet</span>
+                    <span class="legend-item" data-filter="moi" onclick="toggleFilter('moi', this)">🔵 Moi</span>
+                </div>
+                
                 <div class="big-map-container">
                     
                     <!-- Basketball - 6/10 joueurs - VERT (places libres) -->
-                    <div class="sport-pin" style="top: 25%; left: 65%;" onclick="toggleTooltip(this, 'basketball')">
+                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" onclick="openDetails('basketball')">
                         🏀
-                        <div class="sport-tooltip" id="tooltip-basketball">
-                            <button class="close-tooltip" onclick="closeTooltip('basketball')">&times;</button>
-                            <div class="tooltip-content">
-                                🏀 Basketball Match<br>
-                                📍 Terrain Municipal<br>
-                                ⏰ 18h30 • 👥 <span id="count-basketball">6</span>/10 joueurs
-                            </div>
-                            <div class="tooltip-actions" style="display: none;">
-                                <button class="tooltip-btn join-btn" onclick="joinMatch('basketball', 10)">🚀 Rejoindre</button>
-                            </div>
-                            <div class="tooltip-timer"><div class="timer-bar"></div></div>
-                        </div>
                     </div>
                     
                     <!-- Running - 12/20 joueurs - VERT (places libres) -->
-                    <div class="sport-pin" style="top: 60%; left: 20%;" onclick="toggleTooltip(this, 'running')">
+                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" onclick="openDetails('running')">
                         🏃‍♂️
-                        <div class="sport-tooltip" id="tooltip-running">
-                            <button class="close-tooltip" onclick="closeTooltip('running')">&times;</button>
-                            <div class="tooltip-content">
-                                🏃‍♂️ Running Club<br>
-                                📍 Parc Central<br>
-                                ⏰ 19h00 • 👥 <span id="count-running">12</span>/20 joueurs
-                            </div>
-                            <div class="tooltip-actions" style="display: none;">
-                                <button class="tooltip-btn join-btn" onclick="joinMatch('running', 20)">🚀 Rejoindre</button>
-                            </div>
-                            <div class="tooltip-timer"><div class="timer-bar"></div></div>
-                        </div>
                     </div>
                     
                     <!-- Yoga - 15/15 joueurs - ROUGE (COMPLET) -->
-                    <div class="sport-pin complet" style="top: 35%; left: 85%;" onclick="toggleTooltip(this, 'yoga')">
+                    <div class="sport-pin complet" style="top: 35%; left: 85%;" onclick="openDetails('yoga')">
                         🧘‍♀️
-                        <div class="sport-tooltip" id="tooltip-yoga">
-                            <button class="close-tooltip" onclick="closeTooltip('yoga')">&times;</button>
-                            <div class="tooltip-content">
-                                🧘‍♀️ Yoga Matinal<br>
-                                📍 Studio Zen<br>
-                                ⏰ 07h00 • 👥 <span id="count-yoga">15</span>/15 joueurs
-                            </div>
-                            <div class="tooltip-actions" style="display: none;">
-                                <button class="tooltip-btn full-btn">❌ Complet</button>
-                                <button class="tooltip-btn waitlist-btn" onclick="joinWaitlist('yoga')">📝 Liste</button>
-                            </div>
-                            <div class="tooltip-timer"><div class="timer-bar"></div></div>
-                        </div>
                     </div>
                     
                     <!-- Tennis - 4/4 joueurs - ROUGE (COMPLET) -->
-                    <div class="sport-pin complet" style="top: 75%; left: 55%;" onclick="toggleTooltip(this, 'tennis')">
+                    <div class="sport-pin complet" style="top: 75%; left: 55%;" onclick="openDetails('tennis')">
                         🎾
-                        <div class="sport-tooltip" id="tooltip-tennis">
-                            <button class="close-tooltip" onclick="closeTooltip('tennis')">&times;</button>
-                            <div class="tooltip-content">
-                                🎾 Tennis Court<br>
-                                📍 Complexe Sportif<br>
-                                ⏰ 16h00 • 👥 <span id="count-tennis">4</span>/4 joueurs
-                            </div>
-                            <div class="tooltip-actions" style="display: none;">
-                                <button class="tooltip-btn full-btn">❌ Complet</button>
-                                <button class="tooltip-btn waitlist-btn" onclick="joinWaitlist('tennis')">📝 Liste</button>
-                            </div>
-                            <div class="tooltip-timer"><div class="timer-bar"></div></div>
-                        </div>
                     </div>
                     
                     <!-- Football - 10/22 joueurs - VERT (places libres) -->
-                    <div class="sport-pin" style="top: 45%; left: 30%;" onclick="toggleTooltip(this, 'football')">
+                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" onclick="openDetails('football')">
                         ⚽
-                        <div class="sport-tooltip" id="tooltip-football">
-                            <button class="close-tooltip" onclick="closeTooltip('football')">&times;</button>
-                            <div class="tooltip-content">
-                                ⚽ Football Team<br>
-                                📍 Stade Municipal<br>
-                                ⏰ 19h00 • 👥 <span id="count-football">10</span>/22 joueurs
-                            </div>
-                            <div class="tooltip-actions" style="display: none;">
-                                <button class="tooltip-btn join-btn" onclick="joinMatch('football', 22)">🚀 Rejoindre</button>
-                            </div>
-                            <div class="tooltip-timer"><div class="timer-bar"></div></div>
-                        </div>
                     </div>
                     
                     <!-- Swimming - 15/25 joueurs - VERT (places libres) -->
-                    <div class="sport-pin" style="top: 20%; left: 40%;" onclick="toggleTooltip(this, 'swimming')">
+                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" onclick="openDetails('swimming')">
                         🏊‍♀️
-                        <div class="sport-tooltip" id="tooltip-swimming">
-                            <button class="close-tooltip" onclick="closeTooltip('swimming')">&times;</button>
-                            <div class="tooltip-content">
-                                🏊‍♀️ Aqua Fitness<br>
-                                📍 Piscine Municipale<br>
-                                ⏰ 14h00 • 👥 <span id="count-swimming">15</span>/25 joueurs
-                            </div>
-                            <div class="tooltip-actions" style="display: none;">
-                                <button class="tooltip-btn join-btn" onclick="joinMatch('swimming', 25)">🚀 Rejoindre</button>
-                            </div>
-                            <div class="tooltip-timer"><div class="timer-bar"></div></div>
-                        </div>
                     </div>
 
-                    <div class="user-location" style="background: #3b82f6 !important; border: 3px solid #ffffff !important; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;">📍</div>
-                    <div class="pulse-ring" style="border: 2px solid #3b82f6 !important;"></div>
+                    <div class="user-location">📍</div>
+                    <div class="pulse-ring"></div>
+                </div>
+            </div>
+
+            <!-- NOUVELLE ZONE DE DÉTAILS -->
+            <div class="details-section" id="detailsSection">
+                <div class="details-header">
+                    <div class="details-title" id="detailsTitle">Sélectionnez une activité</div>
+                    <button class="close-details" id="closeDetails">&times;</button>
+                </div>
+                
+                <div class="details-content" id="detailsContent">
+                    <div class="default-message">
+                        👆 Cliquez sur un pin pour voir les détails de l'activité
+                    </div>
                 </div>
             </div>
         </div>
@@ -959,9 +1091,8 @@
 
     <script>
         let isDarkMode = false;
-        let activeTooltip = null;
-        let tooltipTimeout = null;
-        let hoverTimeout = null;
+        let activeFilter = null;
+        let activeDetails = null;
         let isDropdownOpen = false;
         let currentAction = null;
         let conversationStep = 0;
@@ -979,7 +1110,96 @@
                 { type: 'bot', text: 'Quel jour te convient ?' },
                 { type: 'user', text: 'Aujourd\'hui à 18h30' },
                 { type: 'bot', text: 'Génial ! Je prépare ton match basketball...' }
+            ],
+            'Rejoindre une activité': [
+                { type: 'bot', text: 'Je vois 4 activités disponibles ! Basketball (4 places), Running (8 places), Football (12 places), et Natation (10 places). Laquelle t\'intéresse ?' },
+                { type: 'user', text: 'Basketball' },
+                { type: 'bot', text: 'Parfait ! Le match de basketball est à 18h30 au Terrain Municipal. Tu confirmes ?' },
+                { type: 'user', text: 'Oui !' },
+                { type: 'bot', text: '🎉 C\'est confirmé ! Tu es inscrit au basketball. Rendez-vous à 18h30 !' }
+            ],
+            'Activités près de moi': [
+                { type: 'bot', text: 'D\'après ta position, voici les activités dans un rayon de 2km :' },
+                { type: 'bot', text: '🏀 Basketball - 400m - 18h30\n🏃‍♂️ Running - 600m - 19h00\n⚽ Football - 800m - 19h00\n🏊‍♀️ Natation - 1.2km - 14h00' },
+                { type: 'user', text: 'Montre-moi le running' },
+                { type: 'bot', text: 'Le Running Club au Parc Central : 12/20 participants, niveau tous niveaux, gratuit. Tu veux rejoindre ?' }
             ]
+        };
+
+        // Données des activités
+        const activitiesData = {
+            basketball: {
+                name: 'Basketball Match',
+                icon: '🏀',
+                location: 'Terrain Municipal',
+                time: '18h30',
+                participants: 6,
+                maxParticipants: 10,
+                level: 'Intermédiaire',
+                price: 'Gratuit',
+                equipment: 'Ballon fourni',
+                isComplete: false
+            },
+            running: {
+                name: 'Running Club',
+                icon: '🏃‍♂️',
+                location: 'Parc Central',
+                time: '19h00',
+                participants: 12,
+                maxParticipants: 20,
+                level: 'Tous niveaux',
+                price: 'Gratuit',
+                equipment: 'Chaussures de course',
+                isComplete: false
+            },
+            yoga: {
+                name: 'Yoga Matinal',
+                icon: '🧘‍♀️',
+                location: 'Studio Zen',
+                time: '07h00',
+                participants: 15,
+                maxParticipants: 15,
+                level: 'Débutant',
+                price: '15€',
+                equipment: 'Tapis fourni',
+                isComplete: true
+            },
+            tennis: {
+                name: 'Tennis Court',
+                icon: '🎾',
+                location: 'Complexe Sportif',
+                time: '16h00',
+                participants: 4,
+                maxParticipants: 4,
+                level: 'Avancé',
+                price: '25€',
+                equipment: 'Raquette requise',
+                isComplete: true
+            },
+            football: {
+                name: 'Football Team',
+                icon: '⚽',
+                location: 'Stade Municipal',
+                time: '19h00',
+                participants: 10,
+                maxParticipants: 22,
+                level: 'Intermédiaire',
+                price: '5€',
+                equipment: 'Crampons conseillés',
+                isComplete: false
+            },
+            swimming: {
+                name: 'Aqua Fitness',
+                icon: '🏊‍♀️',
+                location: 'Piscine Municipale',
+                time: '14h00',
+                participants: 15,
+                maxParticipants: 25,
+                level: 'Tous niveaux',
+                price: '12€',
+                equipment: 'Maillot + bonnet',
+                isComplete: false
+            }
         };
 
         document.getElementById('darkModeBtn').addEventListener('click', function() {
@@ -1085,14 +1305,14 @@
                     hideTyping();
                     addMessage(currentMessage.type, currentMessage.text);
                     conversationStep++;
-                    setTimeout(processConversation, 1500);
-                }, 1000);
+                    setTimeout(processConversation, 1200);
+                }, 800);
             } else {
                 setTimeout(() => {
                     addMessage(currentMessage.type, currentMessage.text);
                     conversationStep++;
-                    setTimeout(processConversation, 1000);
-                }, 800);
+                    setTimeout(processConversation, 800);
+                }, 600);
             }
         }
 
@@ -1124,160 +1344,167 @@
             
             setTimeout(() => {
                 document.getElementById('chatConversation').classList.remove('show');
-            }, 1500);
+            }, 1200);
         }
 
-        document.addEventListener('click', function() {
-            if (isDropdownOpen) {
-                document.getElementById('assistantDropdown').classList.remove('show');
-                document.getElementById('assistantTrigger').classList.remove('open');
-                isDropdownOpen = false;
+        document.getElementById('closeDetails').addEventListener('click', function() {
+            closeDetails();
+        });
+
+        // Fermer conversations en cliquant ailleurs
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.assistant-container') && document.getElementById('chatConversation').classList.contains('show')) {
+                document.getElementById('chatConversation').classList.remove('show');
             }
         });
 
-        function toggleTooltip(pinElement, sportId) {
-            event.stopPropagation();
-            
-            // Fermer le tooltip actuel s'il y en a un
-            if (activeTooltip && activeTooltip !== sportId) {
-                closeTooltip(activeTooltip);
-            }
-            
-            const tooltip = document.getElementById(`tooltip-${sportId}`);
-            const actions = tooltip.querySelector('.tooltip-actions');
+        function toggleFilter(filterType, element) {
             const mapContainer = document.querySelector('.big-map-container');
+            const allLegendItems = document.querySelectorAll('.legend-item');
             
-            if (activeTooltip === sportId) {
-                // Si on clique sur le même pin, fermer
-                closeTooltip(sportId);
-            } else {
-                // Déterminer la couleur AVANT de déplacer le tooltip
-                const isComplet = pinElement.classList.contains('complet');
-                const bgColor = isComplet ? '#ef4444' : '#10b981';
-                
-                // DÉPLACER le tooltip DANS le conteneur de la carte
-                mapContainer.appendChild(tooltip);
-                
-                // FORCE ABSOLUE - Position par rapport à la carte, pas au pin
-                tooltip.style.cssText = `
-                    position: absolute !important;
-                    top: 50% !important;
-                    left: 50% !important;
-                    right: auto !important;
-                    bottom: auto !important;
-                    transform: translate(-50%, -50%) !important;
-                    max-width: 200px !important;
-                    min-width: 180px !important;
-                    opacity: 1 !important;
-                    pointer-events: auto !important;
-                    visibility: visible !important;
-                    z-index: 1000 !important;
-                    background: ${bgColor} !important;
-                    color: white !important;
-                    padding: 10px 12px !important;
-                    border-radius: 12px !important;
-                    font-size: 10px !important;
-                    font-weight: 600 !important;
-                    text-align: left !important;
-                    line-height: 1.4 !important;
-                    white-space: normal !important;
-                    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.25) !important;
-                `;
-                
-                // Ouvrir le tooltip avec boutons
-                tooltip.classList.add('fixed');
-                actions.style.display = 'flex'; // Montrer les boutons
-                activeTooltip = sportId;
-                
-                // Redémarrer l'animation du timer (15 secondes)
-                const timerBar = tooltip.querySelector('.timer-bar');
-                if (timerBar) {
-                    timerBar.style.animation = 'none';
-                    timerBar.offsetHeight; // Force reflow
-                    timerBar.style.animation = 'timerCountdown 15s linear forwards';
-                }
-                
-                // Auto-fermeture après 15 secondes
-                clearTimeout(tooltipTimeout);
-                tooltipTimeout = setTimeout(() => {
-                    closeTooltip(sportId);
-                }, 15000);
-            }
-        }
-
-        function closeTooltip(sportId) {
-            const tooltip = document.getElementById(`tooltip-${sportId}`);
-            const actions = tooltip?.querySelector('.tooltip-actions');
+            console.log('🔍 Clic sur filtre:', filterType);
+            console.log('🔍 Filtre actuel:', activeFilter);
             
-            if (tooltip) {
-                tooltip.classList.remove('fixed');
-                
-                // REMETTRE le tooltip dans son pin d'origine
-                const originalPin = document.querySelector(`[onclick*="${sportId}"]`);
-                if (originalPin) {
-                    originalPin.appendChild(tooltip);
-                }
-                
-                // Reset complet des styles
-                tooltip.style.cssText = '';
-                
-                if (actions) actions.style.display = 'none'; // Cacher les boutons
+            // Si on clique sur le filtre déjà actif, on le désactive pour revenir à l'affichage complet
+            if (activeFilter === filterType) {
+                mapContainer.className = 'big-map-container';
+                element.classList.remove('active');
+                activeFilter = null;
+                console.log('🔄 Filtre désactivé - TOUS les pins sont maintenant visibles');
+                return;
             }
-            if (activeTooltip === sportId) {
-                activeTooltip = null;
-            }
-            clearTimeout(tooltipTimeout);
-        }
-
-        function joinMatch(sportId, maxPlayers) {
-            const countElement = document.getElementById(`count-${sportId}`);
-            const currentCount = parseInt(countElement.textContent);
             
-            if (currentCount < maxPlayers) {
-                // Incrémenter le compteur
-                const newCount = currentCount + 1;
-                countElement.textContent = newCount;
-                
-                // Afficher notification
-                showNotification(`🎉 Tu as rejoint le match ${getSportName(sportId)} !`);
-                
-                // Fermer le tooltip
-                closeTooltip(sportId);
-                
-                // Vérifier si le match devient complet
-                if (newCount >= maxPlayers) {
-                    const pinElement = countElement.closest('.sport-pin');
-                    pinElement.classList.add('complet');
-                    updateTooltipToFull(sportId);
-                    updateStats();
-                }
+            // Désactiver tous les autres filtres
+            allLegendItems.forEach(item => item.classList.remove('active'));
+            
+            // Activer le nouveau filtre
+            activeFilter = filterType;
+            element.classList.add('active');
+            mapContainer.className = `big-map-container filter-${filterType}`;
+            
+            console.log('🎯 Classe appliquée:', mapContainer.className);
+            
+            // Vérifier les pins
+            const disponiblePins = document.querySelectorAll('.sport-pin.disponible');
+            const completPins = document.querySelectorAll('.sport-pin.complet');
+            
+            console.log('🟢 Pins disponibles trouvés:', disponiblePins.length);
+            console.log('🔴 Pins complets trouvés:', completPins.length);
+            
+            switch(filterType) {
+                case 'dispo':
+                    console.log('🟢 Filtre DISPO activé - Seuls les matchs disponibles sont visibles');
+                    console.log('💡 Cliquez à nouveau sur 🟢 Dispo pour revenir à l\'affichage complet');
+                    break;
+                case 'complet':
+                    console.log('🔴 Filtre COMPLET activé - Seuls les matchs complets sont visibles');
+                    console.log('💡 Cliquez à nouveau sur 🔴 Complet pour revenir à l\'affichage complet');
+                    break;
+                case 'moi':
+                    console.log('🔵 Filtre MOI activé - Seule votre position est visible');
+                    console.log('💡 Cliquez à nouveau sur 🔵 Moi pour revenir à l\'affichage complet');
+                    break;
             }
         }
 
-        function joinWaitlist(sportId) {
-            showNotification(`📝 Tu es ajouté à la liste d'attente pour ${getSportName(sportId)} !`);
-            closeTooltip(sportId);
-        }
+        function openDetails(activityId) {
+            const activity = activitiesData[activityId];
+            if (!activity) return;
 
-        function updateTooltipToFull(sportId) {
-            const tooltip = document.getElementById(`tooltip-${sportId}`);
-            const actionsDiv = tooltip.querySelector('.tooltip-actions');
-            actionsDiv.innerHTML = `
-                <button class="tooltip-btn full-btn">❌ Complet</button>
-                <button class="tooltip-btn waitlist-btn" onclick="joinWaitlist('${sportId}')">📝 Liste d'attente</button>
+            const detailsSection = document.getElementById('detailsSection');
+            const detailsTitle = document.getElementById('detailsTitle');
+            const detailsContent = document.getElementById('detailsContent');
+
+            // Mettre à jour le titre
+            detailsTitle.textContent = activity.name;
+
+            // Créer le contenu détaillé
+            detailsContent.innerHTML = `
+                <div class="activity-details">
+                    <div class="activity-header">
+                        <div class="activity-icon ${activity.isComplete ? 'complet' : ''}">
+                            ${activity.icon}
+                        </div>
+                        <div class="activity-info">
+                            <h3>${activity.name}</h3>
+                            <div class="activity-meta">
+                                <span class="meta-item">📍 ${activity.location}</span>
+                                <span class="meta-item">⏰ ${activity.time}</span>
+                                <span class="meta-item">👥 ${activity.participants}/${activity.maxParticipants} joueurs</span>
+                                <span class="meta-item">🎯 ${activity.level}</span>
+                                <span class="meta-item">💰 ${activity.price}</span>
+                                <span class="meta-item">🎽 ${activity.equipment}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-actions">
+                        ${activity.isComplete ? 
+                            `<button class="detail-btn full-detail-btn">❌ Complet</button>
+                             <button class="detail-btn waitlist-detail-btn" onclick="joinWaitlist('${activityId}')">📝 Rejoindre la liste d'attente</button>` :
+                            `<button class="detail-btn join-detail-btn" onclick="joinActivity('${activityId}')">🚀 Rejoindre maintenant</button>`
+                        }
+                    </div>
+                </div>
             `;
+
+            // Activer la section
+            detailsSection.classList.add('active');
+            activeDetails = activityId;
+
+            // Scroll vers la zone de détails
+            detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            console.log(`📋 Détails ouverts pour ${activity.name}`);
         }
 
-        function getSportName(sportId) {
-            const names = {
-                'basketball': 'Basketball',
-                'running': 'Running Club',
-                'yoga': 'Yoga',
-                'tennis': 'Tennis',
-                'football': 'Football',
-                'swimming': 'Aqua Fitness'
-            };
-            return names[sportId] || sportId;
+        function closeDetails() {
+            const detailsSection = document.getElementById('detailsSection');
+            const detailsTitle = document.getElementById('detailsTitle');
+            const detailsContent = document.getElementById('detailsContent');
+
+            detailsSection.classList.remove('active');
+            detailsTitle.textContent = 'Sélectionnez une activité';
+            detailsContent.innerHTML = `
+                <div class="default-message">
+                    👆 Cliquez sur un pin pour voir les détails de l'activité
+                </div>
+            `;
+            
+            activeDetails = null;
+            console.log('❌ Détails fermés');
+        }
+
+        function joinActivity(activityId) {
+            const activity = activitiesData[activityId];
+            if (!activity || activity.isComplete) return;
+
+            // Incrémenter le compteur
+            activity.participants += 1;
+            
+            // Vérifier si complet
+            if (activity.participants >= activity.maxParticipants) {
+                activity.isComplete = true;
+                // Mettre à jour la classe du pin
+                const pin = document.querySelector(`[onclick*="${activityId}"]`);
+                pin.classList.add('complet');
+                pin.classList.remove('disponible');
+            }
+
+            // Notification
+            showNotification(`🎉 Tu as rejoint ${activity.name} !`);
+            
+            // Fermer les détails
+            closeDetails();
+
+            console.log(`✅ Rejoint ${activity.name} - ${activity.participants}/${activity.maxParticipants}`);
+        }
+
+        function joinWaitlist(activityId) {
+            const activity = activitiesData[activityId];
+            showNotification(`📝 Tu es ajouté à la liste d'attente pour ${activity.name} !`);
+            closeDetails();
+            console.log(`📝 Liste d'attente pour ${activity.name}`);
         }
 
         function showNotification(message) {
@@ -1292,16 +1519,17 @@
             }, 3000);
         }
 
-        function updateStats() {
-            // Mettre à jour les stats en temps réel
-            const completeMatches = document.querySelectorAll('.sport-pin.complet').length;
-            const availableMatches = document.querySelectorAll('.sport-pin:not(.complet)').length;
-            
-            // Ici on pourrait mettre à jour les chiffres dans les stats
-            console.log(`Stats: ${availableMatches} dispos, ${completeMatches} complets`);
-        }
+        // Fermer détails en cliquant ailleurs
+        document.addEventListener('click', function(e) {
+            if (activeDetails && !e.target.closest('.details-section') && !e.target.closest('.sport-pin')) {
+                closeDetails();
+            }
+        });
 
-        console.log('🎯 Sporly interactif chargé - Cliquez sur les pins pour rejoindre !');
+        console.log('🎯 Sporly FINAL avec filtres + zone de détails chargé !');
+        console.log('💡 Filtres : Cliquez sur 🟢 Dispo, 🔴 Complet ou 🔵 Moi pour filtrer');
+        console.log('🔄 Astuce : Cliquez à nouveau sur un filtre actif pour revenir à l\'affichage COMPLET');
+        console.log('📋 Cliquez sur un pin pour voir les détails complets !');
     </script>
 </body>
 </html>
