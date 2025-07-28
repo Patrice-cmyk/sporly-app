@@ -29,7 +29,7 @@
         
         .navbar {
             background: #ffffff;
-            padding: 15px 20px;
+            padding: 10px 20px;
             box-shadow: 0 2px 10px rgba(30, 64, 175, 0.1);
             display: flex;
             justify-content: space-between;
@@ -74,7 +74,34 @@
             margin-left: 4px;
         }
         
-        .nav-icons { display: flex; gap: 10px; }
+        .nav-icons { 
+            display: flex; 
+            gap: 10px; 
+            align-items: flex-start;
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            width: 35px;
+        }
+        
+        .profile-name {
+            font-size: 11px;
+            color: #f97316;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            opacity: 1;
+            text-align: center;
+            margin-top: 1px;
+        }
+        
+        .dark-mode .profile-name {
+            color: #fbbf24;
+        }
         
         .nav-icon {
             width: 35px;
@@ -93,11 +120,315 @@
         .nav-icon:hover { background: rgba(30, 64, 175, 0.2); }
         .dark-mode .nav-icon { background: rgba(59, 130, 246, 0.1); color: #ffffff; }
         .dark-mode .nav-icon:hover { background: rgba(59, 130, 246, 0.2); }
+
+        /* Profile Avatar Styles */
+        .profile-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid #1e40af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .dark-mode .profile-avatar {
+            border-color: #3b82f6;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+        }
+
+        .dark-mode .profile-avatar:hover {
+            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Profile Modal Styles */
+        .profile-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .profile-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .profile-modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .profile-modal.show .profile-modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .dark-mode .profile-modal-content {
+            background: #2a2a2a;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .profile-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dark-mode .profile-header {
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .profile-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .dark-mode .profile-title {
+            color: #3b82f6;
+        }
+
+        .close-profile {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 50%;
+            color: #1e40af;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-profile:hover {
+            background: rgba(30, 64, 175, 0.2);
+            transform: scale(1.1);
+        }
+
+        .dark-mode .close-profile {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .profile-body {
+            padding: 20px;
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .current-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .avatar-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .avatar-label {
+            color: #94a3b8;
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .avatar-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .avatar-option:hover {
+            transform: scale(1.1);
+            border-color: #1e40af;
+        }
+
+        .avatar-option.selected {
+            border-color: #f97316;
+            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.3);
+        }
+
+        .dark-mode .avatar-option:hover {
+            border-color: #3b82f6;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+
+        .dark-mode .form-label {
+            color: #3b82f6;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid rgba(30, 64, 175, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #ffffff;
+            color: #1e40af;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        .dark-mode .form-input {
+            background: #374151;
+            border-color: rgba(59, 130, 246, 0.2);
+            color: #ffffff;
+        }
+
+        .dark-mode .form-input:focus {
+            border-color: #f97316;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid rgba(30, 64, 175, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            background: #ffffff;
+            color: #1e40af;
+            cursor: pointer;
+        }
+
+        .dark-mode .form-select {
+            background: #374151;
+            border-color: rgba(59, 130, 246, 0.2);
+            color: #ffffff;
+        }
+
+        .save-profile-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .save-profile-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(30, 64, 175, 0.1);
+        }
+
+        .dark-mode .profile-stats {
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .stat-mini {
+            text-align: center;
+        }
+
+        .stat-mini-number {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f97316;
+        }
+
+        .stat-mini-label {
+            font-size: 10px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .dark-mode .stat-mini-label {
+            color: #94a3b8;
+        }
         
         .main-content {
             padding: 10px;
             background: #f8fafc;
-            min-height: calc(100vh - 65px);
+            min-height: calc(100vh - 55px);
             transition: all 0.3s ease;
         }
         
@@ -698,6 +1029,13 @@
             align-items: center;
             justify-content: center;
             gap: 4px;
+            white-space: nowrap;
+        }
+
+        .compact-btn {
+            padding: 8px 8px;
+            font-size: 10px;
+            gap: 3px;
         }
 
         .join-detail-btn {
@@ -720,87 +1058,6 @@
         .waitlist-detail-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
-        }
-
-        .full-detail-btn {
-            background: rgba(100, 116, 139, 0.1);
-            color: #64748b;
-            cursor: not-allowed;
-            border: 1px solid rgba(100, 116, 139, 0.2);
-        }-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        }
-
-        .activity-info h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e40af;
-            margin-bottom: 4px;
-        }
-
-        .dark-mode .activity-info h3 {
-            color: #3b82f6;
-        }
-
-        .activity-meta {
-            font-size: 12px;
-            color: #64748b;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .dark-mode .activity-meta {
-            color: #94a3b8;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .details-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .detail-btn {
-            flex: 1;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .join-detail-btn {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .join-detail-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
-        }
-
-        .waitlist-detail-btn {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
-        }
-
-        .waitlist-detail-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
         }
 
         .full-detail-btn {
@@ -956,7 +1213,10 @@
             <div class="nav-icons">
                 <button class="nav-icon" id="darkModeBtn">🌙</button>
                 <button class="nav-icon">🔔</button>
-                <button class="nav-icon">👤</button>
+                <div class="profile-section">
+                    <div class="profile-avatar" id="profileAvatar">👤</div>
+                    <div class="profile-name" id="profileName" style="display: none;">Salut Patrice</div>
+                </div>
                 <button class="nav-icon">📤</button>
             </div>
         </nav>
@@ -973,23 +1233,23 @@
                 </div>
                 
                 <div class="assistant-dropdown" id="assistantDropdown">
-                    <div class="dropdown-item" onclick="selectAction('Créer un match', '🏀')">
+                    <div class="dropdown-item" data-action="Créer un match" data-emoji="🏀">
                         <div class="dropdown-icon">🏀</div>
                         <div class="dropdown-text">Créer un match</div>
                     </div>
-                    <div class="dropdown-item" onclick="selectAction('Rejoindre une activité', '👥')">
+                    <div class="dropdown-item" data-action="Rejoindre une activité" data-emoji="👥">
                         <div class="dropdown-icon blue">👥</div>
                         <div class="dropdown-text">Rejoindre une activité</div>
                     </div>
-                    <div class="dropdown-item" onclick="selectAction('Activités près de moi', '📍')">
+                    <div class="dropdown-item" data-action="Activités près de moi" data-emoji="📍">
                         <div class="dropdown-icon green">📍</div>
                         <div class="dropdown-text">Activités près de moi</div>
                     </div>
-                    <div class="dropdown-item" onclick="selectAction('Mes statistiques', '📊')">
+                    <div class="dropdown-item" data-action="Mes statistiques" data-emoji="📊">
                         <div class="dropdown-icon purple">📊</div>
                         <div class="dropdown-text">Mes statistiques</div>
                     </div>
-                    <div class="dropdown-item" onclick="selectAction('Rechercher un sport', '🔍')">
+                    <div class="dropdown-item" data-action="Rechercher un sport" data-emoji="🔍">
                         <div class="dropdown-icon">🔍</div>
                         <div class="dropdown-text">Rechercher un sport</div>
                     </div>
@@ -1006,18 +1266,17 @@
             </div>
 
             <div class="stats-section">
-            <div class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-number orange">6</div>
+                        <div class="stat-number orange" id="activePlayersCount">6</div>
                         <div class="stat-label">Joueurs actifs</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number blue">4</div>
+                        <div class="stat-number blue" id="availableMatchesCount">4</div>
                         <div class="stat-label">Matchs dispo</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number green">2</div>
+                        <div class="stat-number green" id="fullMatchesCount">2</div>
                         <div class="stat-label">Complets</div>
                     </div>
                 </div>
@@ -1026,40 +1285,40 @@
             <div class="big-map-section">
                 <div class="section-title">Aventures à proximité</div>
                 <div class="inline-legend">
-                    <span class="legend-item" data-filter="dispo" onclick="toggleFilter('dispo', this)">🟢 Dispo</span>
-                    <span class="legend-item" data-filter="complet" onclick="toggleFilter('complet', this)">🔴 Complet</span>
-                    <span class="legend-item" data-filter="moi" onclick="toggleFilter('moi', this)">🔵 Moi</span>
+                    <span class="legend-item" data-filter="dispo">🟢 Dispo</span>
+                    <span class="legend-item" data-filter="complet">🔴 Complet</span>
+                    <span class="legend-item" data-filter="moi">🔵 Moi</span>
                 </div>
                 
                 <div class="big-map-container">
                     
                     <!-- Basketball - 6/10 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" onclick="openDetails('basketball')">
+                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" data-activity="basketball">
                         🏀
                     </div>
                     
                     <!-- Running - 12/20 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" onclick="openDetails('running')">
+                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" data-activity="running">
                         🏃‍♂️
                     </div>
                     
                     <!-- Yoga - 15/15 joueurs - ROUGE (COMPLET) -->
-                    <div class="sport-pin complet" style="top: 35%; left: 85%;" onclick="openDetails('yoga')">
+                    <div class="sport-pin complet" style="top: 35%; left: 85%;" data-activity="yoga">
                         🧘‍♀️
                     </div>
                     
                     <!-- Tennis - 4/4 joueurs - ROUGE (COMPLET) -->
-                    <div class="sport-pin complet" style="top: 75%; left: 55%;" onclick="openDetails('tennis')">
+                    <div class="sport-pin complet" style="top: 75%; left: 55%;" data-activity="tennis">
                         🎾
                     </div>
                     
                     <!-- Football - 10/22 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" onclick="openDetails('football')">
+                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" data-activity="football">
                         ⚽
                     </div>
                     
                     <!-- Swimming - 15/25 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" onclick="openDetails('swimming')">
+                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" data-activity="swimming">
                         🏊‍♀️
                     </div>
 
@@ -1089,14 +1348,240 @@
         <span id="notificationText">🎉 Tu as rejoint le match Basketball !</span>
     </div>
 
-    <script>
-        let isDarkMode = false;
-        let activeFilter = null;
-        let activeDetails = null;
-        let isDropdownOpen = false;
-        let currentAction = null;
-        let conversationStep = 0;
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profileModal">
+        <div class="profile-modal-content">
+            <div class="profile-header">
+                <div class="profile-title" id="profileModalTitle">Mon Profil</div>
+                <button class="close-profile" id="closeProfile">&times;</button>
+            </div>
+            
+            <!-- Vue profil configuré -->
+            <div class="profile-body" id="profileViewMode" style="display: none;">
+                <div class="profile-view">
+                    <div class="current-avatar" id="viewAvatar">👤</div>
+                    <div class="profile-info">
+                        <div class="profile-name" id="viewName">Nom d'utilisateur</div>
+                        <div class="profile-details" id="viewDetails">
+                            Informations du profil
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <button class="profile-btn edit-profile-btn" id="editProfileBtn">
+                            ✏️ Modifier
+                        </button>
+                        <button class="profile-btn logout-profile-btn" id="logoutProfileBtn">
+                            🚪 Déconnexion
+                        </button>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-number" id="viewActivities">0</div>
+                            <div class="stat-mini-label">Activités</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-number" id="viewBadges">0</div>
+                            <div class="stat-mini-label">Badges</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-number" id="viewRating">5.0</div>
+                            <div class="stat-mini-label">Note</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vue édition/création -->
+            <div class="profile-body" id="profileEditMode">
+                <div class="avatar-section-compact">
+                    <div class="current-avatar" id="currentAvatar">👤</div>
+                    <div class="avatar-label">Choisir un avatar</div>
+                    
+                    <div class="avatar-grid">
+                        <div class="avatar-option" data-avatar="🏃‍♂️" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">🏃‍♂️</div>
+                        <div class="avatar-option" data-avatar="🏀" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">🏀</div>
+                        <div class="avatar-option" data-avatar="⚽" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">⚽</div>
+                        <div class="avatar-option" data-avatar="🎾" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);">🎾</div>
+                        <div class="avatar-option" data-avatar="🏊‍♀️" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">🏊‍♀️</div>
+                        <div class="avatar-option" data-avatar="🧘‍♀️" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">🧘‍♀️</div>
+                        <div class="avatar-option" data-avatar="🚴‍♂️" style="background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);">🚴‍♂️</div>
+                        <div class="avatar-option" data-avatar="⛹️‍♀️" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">⛹️‍♀️</div>
+                        <div class="avatar-option" data-avatar="🏋️‍♂️" style="background: linear-gradient(135deg, #64748b 0%, #475569 100%);">🏋️‍♂️</div>
+                        <div class="avatar-option" data-avatar="🤸‍♀️" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🤸‍♀️</div>
+                        <div class="avatar-option" data-avatar="🏄‍♂️" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">🏄‍♂️</div>
+                        <div class="avatar-option" data-avatar="🎯" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">🎯</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nom d'utilisateur</label>
+                    <input type="text" class="form-input" id="username" placeholder="Votre nom d'utilisateur">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Âge</label>
+                    <input type="number" class="form-input" id="age" placeholder="Votre âge" min="13" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Sport préféré</label>
+                    <select class="form-select" id="favoriteSport">
+                        <option value="">Choisir un sport</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="football">Football</option>
+                        <option value="tennis">Tennis</option>
+                        <option value="running">Course à pied</option>
+                        <option value="swimming">Natation</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="cycling">Cyclisme</option>
+                        <option value="fitness">Fitness</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Niveau</label>
+                    <select class="form-select" id="skillLevel">
+                        <option value="">Choisir un niveau</option>
+                        <option value="beginner">Débutant</option>
+                        <option value="intermediate">Intermédiaire</option>
+                        <option value="advanced">Avancé</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Bio (optionnel)</label>
+                    <input type="text" class="form-input" id="bio" placeholder="Parlez de vous en quelques mots...">
+                </div>
+                
+                <button class="save-profile-btn" id="saveProfile">
+                    💾 Sauvegarder le profil
+                </button>
+                
+                <div class="profile-stats">
+                    <div class="stat-mini">
+                        <div class="stat-mini-number" id="profileActivities">0</div>
+                        <div class="stat-mini-label">Activités</div>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="stat-mini-number" id="profileBadges">0</div>
+                        <div class="stat-mini-label">Badges</div>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="stat-mini-number" id="profileRating">5.0</div>
+                        <div class="stat-mini-label">Note</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>="🏊‍♀️" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">🏊‍♀️</div>
+                        <div class="avatar-option" data-avatar="🧘‍♀️" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">🧘‍♀️</div>
+                        <div class="avatar-option" data-avatar="🚴‍♂️" style="background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);">🚴‍♂️</div>
+                        <div class="avatar-option" data-avatar="⛹️‍♀️" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">⛹️‍♀️</div>
+                        <div class="avatar-option" data-avatar="🏋️‍♂️" style="background: linear-gradient(135deg, #64748b 0%, #475569 100%);">🏋️‍♂️</div>
+                        <div class="avatar-option" data-avatar="🤸‍♀️" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🤸‍♀️</div>
+                        <div class="avatar-option" data-avatar="🏄‍♂️" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">🏄‍♂️</div>
+                        <div class="avatar-option" data-avatar="🎯" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">🎯</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nom d'utilisateur</label>
+                    <input type="text" class="form-input" id="username" placeholder="Votre nom d'utilisateur">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Âge</label>
+                    <input type="number" class="form-input" id="age" placeholder="Votre âge" min="13" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Sport préféré</label>
+                    <select class="form-select" id="favoriteSport">
+                        <option value="">Choisir un sport</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="football">Football</option>
+                        <option value="tennis">Tennis</option>
+                        <option value="running">Course à pied</option>
+                        <option value="swimming">Natation</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="cycling">Cyclisme</option>
+                        <option value="fitness">Fitness</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Niveau</label>
+                    <select class="form-select" id="skillLevel">
+                        <option value="">Choisir un niveau</option>
+                        <option value="beginner">Débutant</option>
+                        <option value="intermediate">Intermédiaire</option>
+                        <option value="advanced">Avancé</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Bio (optionnel)</label>
+                    <input type="text" class="form-input" id="bio" placeholder="Parlez de vous en quelques mots...">
+                </div>
+                
+                <button class="save-profile-btn" id="saveProfile">
+                    💾 Sauvegarder le profil
+                </button>
+                
+                <div class="profile-stats">
+                    <div class="stat-mini">
+                        <div class="stat-mini-number" id="profileActivities">0</div>
+                        <div class="stat-mini-label">Activités</div>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="stat-mini-number" id="profileBadges">0</div>
+                        <div class="stat-mini-label">Badges</div>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="stat-mini-number" id="profileRating">5.0</div>
+                        <div class="stat-mini-label">Note</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        // Configuration et variables globales
+        const AppConfig = {
+            TYPING_DELAY: 800,
+            MESSAGE_DELAY: 1200,
+            NOTIFICATION_DURATION: 3000,
+            CONVERSATION_TIMEOUT: 1200
+        };
+
+        // État de l'application
+        const AppState = {
+            isDarkMode: false,
+            activeFilter: null,
+            activeDetails: null,
+            isDropdownOpen: false,
+            currentAction: null,
+            conversationStep: 0,
+            isListening: false,
+            userProfile: {
+                avatar: '👤',
+                username: '',
+                age: '',
+                favoriteSport: '',
+                skillLevel: '',
+                bio: '',
+                activitiesJoined: 0,
+                badges: 0,
+                rating: 5.0
+            }
+        };
+
+        // Données des conversations optimisées
         const conversations = {
             'Créer un match': [
                 { type: 'bot', text: 'Super ! Quel sport veux-tu pratiquer ?' },
@@ -1126,7 +1611,7 @@
             ]
         };
 
-        // Données des activités
+        // Données des activités optimisées avec validation
         const activitiesData = {
             basketball: {
                 name: 'Basketball Match',
@@ -1202,334 +1687,815 @@
             }
         };
 
-        document.getElementById('darkModeBtn').addEventListener('click', function() {
-            isDarkMode = !isDarkMode;
-            document.body.classList.toggle('dark-mode');
-            this.innerHTML = isDarkMode ? '☀️' : '🌙';
-        });
-
-        document.getElementById('assistantTrigger').addEventListener('click', function(e) {
-            if (e.target.closest('.mic-btn-single')) return;
-            e.stopPropagation();
-            toggleDropdown();
-        });
-
-        document.getElementById('dropdownArrow').addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleDropdown();
-        });
-
-        document.getElementById('micButton').addEventListener('click', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
+        // Utilitaires
+        const Utils = {
+            getElement: (id) => document.getElementById(id),
             
-            if (currentAction) {
-                startVoiceConversation();
-            } else {
-                toggleDropdown();
+            toggleClass: (element, className, condition = null) => {
+                if (condition !== null) {
+                    element.classList.toggle(className, condition);
+                } else {
+                    element.classList.toggle(className);
+                }
+            },
+
+            debounce: (func, wait) => {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            updateStats: () => {
+                const availableCount = Object.values(activitiesData).filter(a => !a.isComplete).length;
+                const fullCount = Object.values(activitiesData).filter(a => a.isComplete).length;
+                const totalParticipants = Object.values(activitiesData).reduce((sum, a) => sum + a.participants, 0);
+
+                Utils.getElement('activePlayersCount').textContent = totalParticipants;
+                Utils.getElement('availableMatchesCount').textContent = availableCount;
+                Utils.getElement('fullMatchesCount').textContent = fullCount;
             }
-        });
+        };
 
-        function toggleDropdown() {
-            isDropdownOpen = !isDropdownOpen;
-            const dropdown = document.getElementById('assistantDropdown');
-            const trigger = document.getElementById('assistantTrigger');
-            
-            if (isDropdownOpen) {
-                dropdown.classList.add('show');
-                trigger.classList.add('open');
-            } else {
-                dropdown.classList.remove('show');
+        // Gestionnaire du profil utilisateur
+        const ProfileManager = {
+            init() {
+                const profileAvatar = Utils.getElement('profileAvatar');
+                const closeProfile = Utils.getElement('closeProfile');
+                const saveProfile = Utils.getElement('saveProfile');
+                const editProfileBtn = Utils.getElement('editProfileBtn');
+                const logoutProfileBtn = Utils.getElement('logoutProfileBtn');
+                const avatarOptions = document.querySelectorAll('.avatar-option');
+
+                profileAvatar?.addEventListener('click', this.openProfile.bind(this));
+                closeProfile?.addEventListener('click', this.closeProfile.bind(this));
+                saveProfile?.addEventListener('click', this.saveProfile.bind(this));
+                editProfileBtn?.addEventListener('click', this.switchToEditMode.bind(this));
+                logoutProfileBtn?.addEventListener('click', this.logoutProfile.bind(this));
+
+                // Gestionnaire de sélection d'avatar
+                avatarOptions.forEach(option => {
+                    option.addEventListener('click', this.selectAvatar.bind(this));
+                });
+
+                // Fermer la modal en cliquant à l'extérieur
+                const profileModal = Utils.getElement('profileModal');
+                profileModal?.addEventListener('click', (e) => {
+                    if (e.target === profileModal) {
+                        this.closeProfile();
+                    }
+                });
+
+                // Charger le profil sauvegardé
+                this.loadProfile();
+            },
+
+            openProfile() {
+                const modal = Utils.getElement('profileModal');
+                modal?.classList.add('show');
+                
+                // Déterminer quelle vue afficher
+                if (this.hasCompleteProfile()) {
+                    this.showViewMode();
+                } else {
+                    this.showEditMode();
+                }
+            },
+
+            closeProfile() {
+                const modal = Utils.getElement('profileModal');
+                modal?.classList.remove('show');
+            },
+
+            hasCompleteProfile() {
+                const profile = AppState.userProfile;
+                return profile.username && profile.username.trim() !== '';
+            },
+
+            showViewMode() {
+                Utils.getElement('profileViewMode').style.display = 'block';
+                Utils.getElement('profileEditMode').style.display = 'none';
+                Utils.getElement('profileModalTitle').textContent = 'Mon Profil';
+                this.populateViewMode();
+            },
+
+            showEditMode() {
+                Utils.getElement('profileViewMode').style.display = 'none';
+                Utils.getElement('profileEditMode').style.display = 'block';
+                Utils.getElement('profileModalTitle').textContent = this.hasCompleteProfile() ? 'Modifier le profil' : 'Créer mon profil';
+                this.populateEditMode();
+            },
+
+            switchToEditMode() {
+                this.showEditMode();
+            },
+
+            populateViewMode() {
+                const profile = AppState.userProfile;
+                
+                // Avatar et nom
+                const viewAvatar = Utils.getElement('viewAvatar');
+                if (viewAvatar) {
+                    viewAvatar.textContent = profile.avatar;
+                    if (profile.avatarStyle) {
+                        viewAvatar.style.background = profile.avatarStyle;
+                    }
+                }
+                
+                Utils.getElement('viewName').textContent = profile.username || 'Utilisateur';
+                
+                // Détails du profil
+                const details = [];
+                if (profile.age) details.push(`${profile.age} ans`);
+                if (profile.favoriteSport) {
+                    const sports = {
+                        'basketball': 'Basketball', 'football': 'Football', 'tennis': 'Tennis',
+                        'running': 'Course à pied', 'swimming': 'Natation', 'yoga': 'Yoga',
+                        'cycling': 'Cyclisme', 'fitness': 'Fitness'
+                    };
+                    details.push(sports[profile.favoriteSport] || profile.favoriteSport);
+                }
+                if (profile.skillLevel) details.push(this.getUserLevel());
+                if (profile.bio) details.push(`"${profile.bio}"`);
+                
+                Utils.getElement('viewDetails').textContent = details.length > 0 ? details.join(' • ') : 'Aucune information supplémentaire';
+                
+                // Statistiques
+                Utils.getElement('viewActivities').textContent = profile.activitiesJoined;
+                Utils.getElement('viewBadges').textContent = profile.badges;
+                Utils.getElement('viewRating').textContent = profile.rating.toFixed(1);
+            },
+
+            populateEditMode() {
+                const profile = AppState.userProfile;
+                
+                // Remplir les champs
+                Utils.getElement('username').value = profile.username || '';
+                Utils.getElement('age').value = profile.age || '';
+                Utils.getElement('favoriteSport').value = profile.favoriteSport || '';
+                Utils.getElement('skillLevel').value = profile.skillLevel || '';
+                Utils.getElement('bio').value = profile.bio || '';
+
+                // Mettre à jour l'avatar actuel
+                const currentAvatar = Utils.getElement('currentAvatar');
+                if (currentAvatar) {
+                    currentAvatar.textContent = profile.avatar;
+                    if (profile.avatarStyle) {
+                        currentAvatar.style.background = profile.avatarStyle;
+                    }
+                }
+
+                // Sélectionner l'avatar correspondant
+                document.querySelectorAll('.avatar-option').forEach(option => {
+                    option.classList.remove('selected');
+                    if (option.dataset.avatar === profile.avatar) {
+                        option.classList.add('selected');
+                    }
+                });
+
+                // Mettre à jour les statistiques
+                Utils.getElement('profileActivities').textContent = profile.activitiesJoined;
+                Utils.getElement('profileBadges').textContent = profile.badges;
+                Utils.getElement('profileRating').textContent = profile.rating.toFixed(1);
+            },
+
+            selectAvatar(e) {
+                const avatarData = e.currentTarget.dataset.avatar;
+                const avatarStyle = e.currentTarget.style.background;
+                
+                if (!avatarData) return;
+
+                // Désélectionner tous les avatars
+                document.querySelectorAll('.avatar-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+
+                // Sélectionner le nouvel avatar
+                e.currentTarget.classList.add('selected');
+
+                // Mettre à jour l'aperçu
+                const currentAvatar = Utils.getElement('currentAvatar');
+                if (currentAvatar) {
+                    currentAvatar.textContent = avatarData;
+                    currentAvatar.style.background = avatarStyle;
+                }
+
+                // Mettre à jour l'état temporairement
+                AppState.userProfile.avatar = avatarData;
+                AppState.userProfile.avatarStyle = avatarStyle;
+            },
+
+            saveProfile() {
+                const profile = AppState.userProfile;
+                
+                // Récupérer les valeurs des champs
+                const username = Utils.getElement('username').value.trim();
+                const age = Utils.getElement('age').value;
+                const favoriteSport = Utils.getElement('favoriteSport').value;
+                const skillLevel = Utils.getElement('skillLevel').value;
+                const bio = Utils.getElement('bio').value.trim();
+
+                // Validation basique
+                if (!username) {
+                    NotificationManager.show('❌ Le nom d\'utilisateur est requis', 'error');
+                    return;
+                }
+
+                if (age && (age < 13 || age > 100)) {
+                    NotificationManager.show('❌ L\'âge doit être entre 13 et 100 ans', 'error');
+                    return;
+                }
+
+                // Mettre à jour le profil
+                profile.username = username;
+                profile.age = age;
+                profile.favoriteSport = favoriteSport;
+                profile.skillLevel = skillLevel;
+                profile.bio = bio;
+
+                // Sauvegarder et mettre à jour l'UI
+                this.saveToStorage();
+                this.updateUI();
+                this.closeProfile();
+
+                NotificationManager.show('✅ Profil sauvegardé avec succès !');
+            },
+
+            logoutProfile() {
+                if (confirm('Êtes-vous sûr de vouloir supprimer votre profil ?')) {
+                    // Réinitialiser le profil
+                    AppState.userProfile = {
+                        avatar: '👤',
+                        username: '',
+                        age: '',
+                        favoriteSport: '',
+                        skillLevel: '',
+                        bio: '',
+                        activitiesJoined: 0,
+                        badges: 0,
+                        rating: 5.0
+                    };
+                    
+                    // Supprimer du localStorage
+                    localStorage.removeItem('sporly_profile');
+                    
+                    // Mettre à jour l'UI
+                    this.updateUI();
+                    this.closeProfile();
+                    
+                    NotificationManager.show('👋 Profil supprimé');
+                }
+            },
+
+            updateUI() {
+                const profile = AppState.userProfile;
+                const profileAvatar = Utils.getElement('profileAvatar');
+                const profileName = Utils.getElement('profileName');
+                
+                if (profileAvatar) {
+                    profileAvatar.textContent = profile.avatar;
+                    if (profile.avatarStyle) {
+                        profileAvatar.style.background = profile.avatarStyle;
+                    }
+                }
+
+                // Afficher/masquer le nom sous l'avatar
+                if (profileName) {
+                    if (profile.username && profile.username.trim() !== '') {
+                        profileName.textContent = `Salut ${profile.username}`;
+                        profileName.style.display = 'block';
+                    } else {
+                        profileName.style.display = 'none';
+                    }
+                }
+            },
+
+            saveToStorage() {
+                try {
+                    const data = JSON.stringify(AppState.userProfile);
+                    localStorage.setItem('sporly_profile', data);
+                } catch (error) {
+                    console.warn('Impossible de sauvegarder le profil:', error);
+                }
+            },
+
+            loadProfile() {
+                try {
+                    const saved = localStorage.getItem('sporly_profile');
+                    if (saved) {
+                        const profile = JSON.parse(saved);
+                        AppState.userProfile = { ...AppState.userProfile, ...profile };
+                        this.updateUI();
+                    }
+                } catch (error) {
+                    console.warn('Impossible de charger le profil:', error);
+                }
+            },
+
+            incrementActivities() {
+                AppState.userProfile.activitiesJoined += 1;
+                this.saveToStorage();
+            },
+
+            getDisplayName() {
+                return AppState.userProfile.username || 'Joueur';
+            },
+
+            getUserLevel() {
+                const level = AppState.userProfile.skillLevel;
+                const levels = {
+                    'beginner': 'Débutant',
+                    'intermediate': 'Intermédiaire', 
+                    'advanced': 'Avancé',
+                    'expert': 'Expert'
+                };
+                return levels[level] || 'Non défini';
+            }
+        };
+        const DarkModeManager = {
+            init() {
+                const darkModeBtn = Utils.getElement('darkModeBtn');
+                darkModeBtn?.addEventListener('click', this.toggle.bind(this));
+            },
+
+            toggle() {
+                AppState.isDarkMode = !AppState.isDarkMode;
+                Utils.toggleClass(document.body, 'dark-mode', AppState.isDarkMode);
+                Utils.getElement('darkModeBtn').innerHTML = AppState.isDarkMode ? '☀️' : '🌙';
+            }
+        };
+
+        // Gestionnaire des conversations
+        const ConversationManager = {
+            init() {
+                const assistantTrigger = Utils.getElement('assistantTrigger');
+                const dropdownArrow = Utils.getElement('dropdownArrow');
+                const micButton = Utils.getElement('micButton');
+
+                assistantTrigger?.addEventListener('click', this.handleTriggerClick.bind(this));
+                dropdownArrow?.addEventListener('click', this.handleDropdownClick.bind(this));
+                micButton?.addEventListener('click', this.handleMicClick.bind(this));
+
+                // Délégation d'événements pour les éléments du dropdown
+                const dropdown = Utils.getElement('assistantDropdown');
+                dropdown?.addEventListener('click', this.handleDropdownItemClick.bind(this));
+            },
+
+            handleTriggerClick(e) {
+                if (e.target.closest('.mic-btn-single')) return;
+                e.stopPropagation();
+                this.toggleDropdown();
+            },
+
+            handleDropdownClick(e) {
+                e.stopPropagation();
+                this.toggleDropdown();
+            },
+
+            handleMicClick(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                if (AppState.currentAction && !AppState.isListening) {
+                    this.startVoiceConversation();
+                } else {
+                    this.toggleDropdown();
+                }
+            },
+
+            handleDropdownItemClick(e) {
+                const item = e.target.closest('.dropdown-item');
+                if (!item) return;
+
+                const actionText = item.dataset.action;
+                const emoji = item.dataset.emoji;
+                
+                if (actionText && emoji) {
+                    this.selectAction(actionText, emoji);
+                }
+            },
+
+            toggleDropdown() {
+                AppState.isDropdownOpen = !AppState.isDropdownOpen;
+                const dropdown = Utils.getElement('assistantDropdown');
+                const trigger = Utils.getElement('assistantTrigger');
+                
+                Utils.toggleClass(dropdown, 'show', AppState.isDropdownOpen);
+                Utils.toggleClass(trigger, 'open', AppState.isDropdownOpen);
+            },
+
+            selectAction(actionText, emoji) {
+                const assistantText = Utils.getElement('assistantText');
+                const actionIcon = Utils.getElement('actionIcon');
+                const trigger = Utils.getElement('assistantTrigger');
+                
+                assistantText.textContent = actionText;
+                AppState.currentAction = actionText;
+                
+                const colors = {
+                    'Créer un match': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+                    'Rejoindre une activité': 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+                    'Activités près de moi': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    'Mes statistiques': 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+                    'Rechercher un sport': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)'
+                };
+                
+                actionIcon.textContent = emoji;
+                actionIcon.style.background = colors[actionText] || colors['Créer un match'];
+                
+                trigger.classList.add('selected');
+                Utils.getElement('assistantDropdown').classList.remove('show');
                 trigger.classList.remove('open');
-            }
-        }
+                AppState.isDropdownOpen = false;
+            },
 
-        function selectAction(actionText, emoji) {
-            const assistantText = document.getElementById('assistantText');
-            const actionIcon = document.getElementById('actionIcon');
-            const trigger = document.getElementById('assistantTrigger');
-            
-            assistantText.textContent = actionText;
-            currentAction = actionText;
-            
-            const colors = {
-                'Créer un match': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
-                'Rejoindre une activité': 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-                'Activités près de moi': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                'Mes statistiques': 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
-                'Rechercher un sport': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)'
-            };
-            
-            actionIcon.textContent = emoji;
-            actionIcon.style.background = colors[actionText];
-            trigger.classList.add('selected');
-            
-            document.getElementById('assistantDropdown').classList.remove('show');
-            trigger.classList.remove('open');
-            isDropdownOpen = false;
-        }
+            startVoiceConversation() {
+                if (!conversations[AppState.currentAction]) {
+                    NotificationManager.show('Fonction en développement...', 'info');
+                    return;
+                }
 
-        function startVoiceConversation() {
-            if (!conversations[currentAction]) {
-                alert('Fonction en développement...');
-                return;
-            }
+                AppState.conversationStep = 0;
+                AppState.isListening = true;
+                
+                const trigger = Utils.getElement('assistantTrigger');
+                const micBtn = Utils.getElement('micButton');
+                const conversation = Utils.getElement('chatConversation');
+                const messagesContainer = Utils.getElement('chatMessages');
+                
+                messagesContainer.innerHTML = '';
+                trigger.classList.add('listening');
+                micBtn.classList.add('listening');
+                conversation.classList.add('show');
+                
+                setTimeout(() => this.processConversation(), 1000);
+            },
 
-            conversationStep = 0;
-            const trigger = document.getElementById('assistantTrigger');
-            const micBtn = document.getElementById('micButton');
-            const conversation = document.getElementById('chatConversation');
-            const messagesContainer = document.getElementById('chatMessages');
-            
-            messagesContainer.innerHTML = '';
-            trigger.classList.add('listening');
-            micBtn.classList.add('listening');
-            conversation.classList.add('show');
-            
-            setTimeout(processConversation, 1000);
-        }
+            processConversation() {
+                const conversationData = conversations[AppState.currentAction];
+                
+                if (AppState.conversationStep >= conversationData.length) {
+                    this.finishConversation();
+                    return;
+                }
+                
+                const currentMessage = conversationData[AppState.conversationStep];
+                
+                if (currentMessage.type === 'bot') {
+                    this.showTyping();
+                    setTimeout(() => {
+                        this.hideTyping();
+                        this.addMessage(currentMessage.type, currentMessage.text);
+                        AppState.conversationStep++;
+                        setTimeout(() => this.processConversation(), AppConfig.MESSAGE_DELAY);
+                    }, AppConfig.TYPING_DELAY);
+                } else {
+                    setTimeout(() => {
+                        this.addMessage(currentMessage.type, currentMessage.text);
+                        AppState.conversationStep++;
+                        setTimeout(() => this.processConversation(), AppConfig.TYPING_DELAY);
+                    }, 600);
+                }
+            },
 
-        function processConversation() {
-            const conversationData = conversations[currentAction];
-            
-            if (conversationStep >= conversationData.length) {
-                finishConversation();
-                return;
-            }
-            
-            const currentMessage = conversationData[conversationStep];
-            
-            if (currentMessage.type === 'bot') {
-                showTyping();
+            showTyping() {
+                Utils.getElement('typingIndicator')?.classList.add('show');
+            },
+
+            hideTyping() {
+                Utils.getElement('typingIndicator')?.classList.remove('show');
+            },
+
+            addMessage(type, text) {
+                const messagesContainer = Utils.getElement('chatMessages');
+                if (!messagesContainer) return;
+
+                const message = document.createElement('div');
+                message.className = `chat-message ${type}`;
+                message.textContent = text;
+                messagesContainer.appendChild(message);
+                
+                const conversation = Utils.getElement('chatConversation');
+                if (conversation) {
+                    conversation.scrollTop = conversation.scrollHeight;
+                }
+            },
+
+            finishConversation() {
+                const trigger = Utils.getElement('assistantTrigger');
+                const micBtn = Utils.getElement('micButton');
+                
+                trigger?.classList.remove('listening');
+                micBtn?.classList.remove('listening');
+                AppState.isListening = false;
+                
                 setTimeout(() => {
-                    hideTyping();
-                    addMessage(currentMessage.type, currentMessage.text);
-                    conversationStep++;
-                    setTimeout(processConversation, 1200);
-                }, 800);
-            } else {
-                setTimeout(() => {
-                    addMessage(currentMessage.type, currentMessage.text);
-                    conversationStep++;
-                    setTimeout(processConversation, 800);
-                }, 600);
+                    Utils.getElement('chatConversation')?.classList.remove('show');
+                }, AppConfig.CONVERSATION_TIMEOUT);
             }
-        }
+        };
 
-        function showTyping() {
-            document.getElementById('typingIndicator').classList.add('show');
-        }
+        // Gestionnaire des filtres
+        const FilterManager = {
+            init() {
+                const legendItems = document.querySelectorAll('.legend-item');
+                legendItems.forEach(item => {
+                    item.addEventListener('click', this.handleFilterClick.bind(this));
+                });
+            },
 
-        function hideTyping() {
-            document.getElementById('typingIndicator').classList.remove('show');
-        }
+            handleFilterClick(e) {
+                const filterType = e.currentTarget.dataset.filter;
+                if (!filterType) return;
 
-        function addMessage(type, text) {
-            const messagesContainer = document.getElementById('chatMessages');
-            const message = document.createElement('div');
-            message.className = `chat-message ${type}`;
-            message.textContent = text;
-            messagesContainer.appendChild(message);
-            
-            const conversation = document.getElementById('chatConversation');
-            conversation.scrollTop = conversation.scrollHeight;
-        }
-
-        function finishConversation() {
-            const trigger = document.getElementById('assistantTrigger');
-            const micBtn = document.getElementById('micButton');
-            
-            trigger.classList.remove('listening');
-            micBtn.classList.remove('listening');
-            
-            setTimeout(() => {
-                document.getElementById('chatConversation').classList.remove('show');
-            }, 1200);
-        }
-
-        document.getElementById('closeDetails').addEventListener('click', function() {
-            closeDetails();
-        });
-
-        // Fermer conversations en cliquant ailleurs
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.assistant-container') && document.getElementById('chatConversation').classList.contains('show')) {
-                document.getElementById('chatConversation').classList.remove('show');
+                const mapContainer = document.querySelector('.big-map-container');
+                const allLegendItems = document.querySelectorAll('.legend-item');
+                
+                // Si on clique sur le filtre déjà actif, on le désactive
+                if (AppState.activeFilter === filterType) {
+                    mapContainer.className = 'big-map-container';
+                    e.currentTarget.classList.remove('active');
+                    AppState.activeFilter = null;
+                    return;
+                }
+                
+                // Désactiver tous les autres filtres
+                allLegendItems.forEach(item => item.classList.remove('active'));
+                
+                // Activer le nouveau filtre
+                AppState.activeFilter = filterType;
+                e.currentTarget.classList.add('active');
+                mapContainer.className = `big-map-container filter-${filterType}`;
             }
-        });
+        };
 
-        function toggleFilter(filterType, element) {
-            const mapContainer = document.querySelector('.big-map-container');
-            const allLegendItems = document.querySelectorAll('.legend-item');
-            
-            console.log('🔍 Clic sur filtre:', filterType);
-            console.log('🔍 Filtre actuel:', activeFilter);
-            
-            // Si on clique sur le filtre déjà actif, on le désactive pour revenir à l'affichage complet
-            if (activeFilter === filterType) {
-                mapContainer.className = 'big-map-container';
-                element.classList.remove('active');
-                activeFilter = null;
-                console.log('🔄 Filtre désactivé - TOUS les pins sont maintenant visibles');
-                return;
-            }
-            
-            // Désactiver tous les autres filtres
-            allLegendItems.forEach(item => item.classList.remove('active'));
-            
-            // Activer le nouveau filtre
-            activeFilter = filterType;
-            element.classList.add('active');
-            mapContainer.className = `big-map-container filter-${filterType}`;
-            
-            console.log('🎯 Classe appliquée:', mapContainer.className);
-            
-            // Vérifier les pins
-            const disponiblePins = document.querySelectorAll('.sport-pin.disponible');
-            const completPins = document.querySelectorAll('.sport-pin.complet');
-            
-            console.log('🟢 Pins disponibles trouvés:', disponiblePins.length);
-            console.log('🔴 Pins complets trouvés:', completPins.length);
-            
-            switch(filterType) {
-                case 'dispo':
-                    console.log('🟢 Filtre DISPO activé - Seuls les matchs disponibles sont visibles');
-                    console.log('💡 Cliquez à nouveau sur 🟢 Dispo pour revenir à l\'affichage complet');
-                    break;
-                case 'complet':
-                    console.log('🔴 Filtre COMPLET activé - Seuls les matchs complets sont visibles');
-                    console.log('💡 Cliquez à nouveau sur 🔴 Complet pour revenir à l\'affichage complet');
-                    break;
-                case 'moi':
-                    console.log('🔵 Filtre MOI activé - Seule votre position est visible');
-                    console.log('💡 Cliquez à nouveau sur 🔵 Moi pour revenir à l\'affichage complet');
-                    break;
-            }
-        }
+        // Gestionnaire des détails d'activité
+        const DetailsManager = {
+            init() {
+                const sportPins = document.querySelectorAll('.sport-pin');
+                sportPins.forEach(pin => {
+                    pin.addEventListener('click', this.handlePinClick.bind(this));
+                });
 
-        function openDetails(activityId) {
-            const activity = activitiesData[activityId];
-            if (!activity) return;
+                Utils.getElement('closeDetails')?.addEventListener('click', this.closeDetails.bind(this));
+                
+                // Fermer détails en cliquant ailleurs
+                document.addEventListener('click', this.handleOutsideClick.bind(this));
+            },
 
-            const detailsSection = document.getElementById('detailsSection');
-            const detailsTitle = document.getElementById('detailsTitle');
-            const detailsContent = document.getElementById('detailsContent');
+            handlePinClick(e) {
+                const activityId = e.currentTarget.dataset.activity;
+                if (activityId) {
+                    this.openDetails(activityId);
+                }
+            },
 
-            // Mettre à jour le titre
-            detailsTitle.textContent = activity.name;
+            handleOutsideClick(e) {
+                if (AppState.activeDetails && 
+                    !e.target.closest('.details-section') && 
+                    !e.target.closest('.sport-pin')) {
+                    this.closeDetails();
+                }
+            },
 
-            // Créer le contenu détaillé
-            detailsContent.innerHTML = `
-                <div class="activity-details">
-                    <div class="activity-header">
-                        <div class="activity-icon ${activity.isComplete ? 'complet' : ''}">
-                            ${activity.icon}
-                        </div>
-                        <div class="activity-info">
-                            <h3>${activity.name}</h3>
-                            <div class="activity-meta">
-                                <span class="meta-item">📍 ${activity.location}</span>
-                                <span class="meta-item">⏰ ${activity.time}</span>
-                                <span class="meta-item">👥 ${activity.participants}/${activity.maxParticipants} joueurs</span>
-                                <span class="meta-item">🎯 ${activity.level}</span>
-                                <span class="meta-item">💰 ${activity.price}</span>
-                                <span class="meta-item">🎽 ${activity.equipment}</span>
+            openDetails(activityId) {
+                const activity = activitiesData[activityId];
+                if (!activity) return;
+
+                const detailsSection = Utils.getElement('detailsSection');
+                const detailsTitle = Utils.getElement('detailsTitle');
+                const detailsContent = Utils.getElement('detailsContent');
+
+                if (!detailsSection || !detailsTitle || !detailsContent) return;
+
+                // Mettre à jour le titre
+                detailsTitle.textContent = activity.name;
+
+                // Créer le contenu détaillé
+                detailsContent.innerHTML = `
+                    <div class="activity-details">
+                        <div class="activity-header">
+                            <div class="activity-icon ${activity.isComplete ? 'complet' : ''}">
+                                ${activity.icon}
+                            </div>
+                            <div class="activity-info">
+                                <h3>${activity.name}</h3>
+                                <div class="activity-meta">
+                                    <span class="meta-item">📍 ${activity.location}</span>
+                                    <span class="meta-item">⏰ ${activity.time}</span>
+                                    <span class="meta-item">👥 ${activity.participants}/${activity.maxParticipants} joueurs</span>
+                                    <span class="meta-item">🎯 ${activity.level}</span>
+                                    <span class="meta-item">💰 ${activity.price}</span>
+                                    <span class="meta-item">🎽 ${activity.equipment}</span>
+                                </div>
                             </div>
                         </div>
+                        
+                        <div class="details-actions">
+                            ${activity.isComplete ? 
+                                `<button class="detail-btn compact-btn waitlist-detail-btn" data-action="waitlist" data-activity="${activityId}">📝 Liste d'attente</button>` :
+                                `<button class="detail-btn join-detail-btn" data-action="join" data-activity="${activityId}">🚀 Rejoindre maintenant</button>`
+                            }
+                        </div>
                     </div>
+                `;
+
+                // Ajouter les gestionnaires d'événements pour les boutons
+                const actionButtons = detailsContent.querySelectorAll('[data-action]');
+                actionButtons.forEach(btn => {
+                    btn.addEventListener('click', this.handleActionClick.bind(this));
+                });
+
+                // Activer la section
+                detailsSection.classList.add('active');
+                AppState.activeDetails = activityId;
+
+                // Scroll vers la zone de détails
+                detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            },
+
+            handleActionClick(e) {
+                const action = e.currentTarget.dataset.action;
+                const activityId = e.currentTarget.dataset.activity;
+
+                if (action === 'join') {
+                    ActivityManager.joinActivity(activityId);
+                } else if (action === 'waitlist') {
+                    ActivityManager.joinWaitlist(activityId);
+                }
+            },
+
+            closeDetails() {
+                const detailsSection = Utils.getElement('detailsSection');
+                const detailsTitle = Utils.getElement('detailsTitle');
+                const detailsContent = Utils.getElement('detailsContent');
+
+                if (!detailsSection || !detailsTitle || !detailsContent) return;
+
+                detailsSection.classList.remove('active');
+                detailsTitle.textContent = 'Sélectionnez une activité';
+                detailsContent.innerHTML = `
+                    <div class="default-message">
+                        👆 Cliquez sur un pin pour voir les détails de l'activité
+                    </div>
+                `;
+                
+                AppState.activeDetails = null;
+            }
+        };
+
+        // Gestionnaire des activités
+        const ActivityManager = {
+            joinActivity(activityId) {
+                const activity = activitiesData[activityId];
+                if (!activity || activity.isComplete) return;
+
+                // Incrémenter le compteur
+                activity.participants += 1;
+                
+                // Vérifier si complet
+                if (activity.participants >= activity.maxParticipants) {
+                    activity.isComplete = true;
+                    // Mettre à jour la classe du pin
+                    const pin = document.querySelector(`[data-activity="${activityId}"]`);
+                    if (pin) {
+                        pin.classList.add('complet');
+                        pin.classList.remove('disponible');
+                    }
+                }
+
+                // Mettre à jour les statistiques
+                Utils.updateStats();
+
+                // Notification
+                NotificationManager.show(`🎉 ${ProfileManager.getDisplayName()} a rejoint ${activity.name} !`);
+                
+                // Incrémenter le compteur d'activités du profil
+                ProfileManager.incrementActivities();
+                
+                // Fermer les détails
+                DetailsManager.closeDetails();
+            },
+
+            joinWaitlist(activityId) {
+                const activity = activitiesData[activityId];
+                if (!activity) return;
+
+                NotificationManager.show(`📝 Tu es ajouté à la liste d'attente pour ${activity.name} !`);
+                DetailsManager.closeDetails();
+            }
+        };
+
+        // Gestionnaire des notifications
+        const NotificationManager = {
+            show(message, type = 'success') {
+                const notification = Utils.getElement('joinNotification');
+                const text = Utils.getElement('notificationText');
+                
+                if (!notification || !text) return;
+                
+                text.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, AppConfig.NOTIFICATION_DURATION);
+            }
+        };
+
+        // Gestionnaire des événements globaux
+        const EventManager = {
+            init() {
+                // Fermer les dropdowns/conversations en cliquant ailleurs
+                document.addEventListener('click', this.handleGlobalClick.bind(this));
+                
+                // Gestion des erreurs globales
+                window.addEventListener('error', this.handleError.bind(this));
+            },
+
+            handleGlobalClick(event) {
+                // Fermer conversation si clic à l'extérieur
+                const chatConversation = Utils.getElement('chatConversation');
+                if (chatConversation?.classList.contains('show') && 
+                    !event.target.closest('.assistant-container')) {
+                    chatConversation.classList.remove('show');
+                }
+
+                // Fermer dropdown si clic à l'extérieur
+                if (AppState.isDropdownOpen && 
+                    !event.target.closest('.assistant-container')) {
+                    ConversationManager.toggleDropdown();
+                }
+            },
+
+            handleError(event) {
+                console.error('Erreur capturée:', event.error);
+                NotificationManager.show('Une erreur est survenue', 'error');
+            }
+        };
+
+        // Initialisation de l'application
+        const App = {
+            init() {
+                try {
+                    // Vérifier que tous les éléments essentiels sont présents
+                    const essentialElements = [
+                        'darkModeBtn', 'assistantTrigger', 'detailsSection'
+                    ];
                     
-                    <div class="details-actions">
-                        ${activity.isComplete ? 
-                            `<button class="detail-btn full-detail-btn">❌ Complet</button>
-                             <button class="detail-btn waitlist-detail-btn" onclick="joinWaitlist('${activityId}')">📝 Rejoindre la liste d'attente</button>` :
-                            `<button class="detail-btn join-detail-btn" onclick="joinActivity('${activityId}')">🚀 Rejoindre maintenant</button>`
-                        }
-                    </div>
-                </div>
-            `;
+                    const missingElements = essentialElements.filter(id => !Utils.getElement(id));
+                    if (missingElements.length > 0) {
+                        console.warn('Éléments manquants:', missingElements);
+                    }
 
-            // Activer la section
-            detailsSection.classList.add('active');
-            activeDetails = activityId;
+                    // Initialiser tous les gestionnaires
+                    ProfileManager.init();
+                    DarkModeManager.init();
+                    ConversationManager.init();
+                    FilterManager.init();
+                    DetailsManager.init();
+                    EventManager.init();
 
-            // Scroll vers la zone de détails
-            detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Mettre à jour les statistiques initiales
+                    Utils.updateStats();
 
-            console.log(`📋 Détails ouverts pour ${activity.name}`);
-        }
+                    console.log('🎯 Sporly OPTIMISÉ chargé avec succès !');
+                    console.log('✅ Améliorations apportées:');
+                    console.log('   - Code modulaire et organisé');
+                    console.log('   - Gestion d\'erreurs améliorée');
+                    console.log('   - Performance optimisée');
+                    console.log('   - Délégation d\'événements');
+                    console.log('   - Validation des données');
+                    console.log('   - Utilitaires réutilisables');
 
-        function closeDetails() {
-            const detailsSection = document.getElementById('detailsSection');
-            const detailsTitle = document.getElementById('detailsTitle');
-            const detailsContent = document.getElementById('detailsContent');
-
-            detailsSection.classList.remove('active');
-            detailsTitle.textContent = 'Sélectionnez une activité';
-            detailsContent.innerHTML = `
-                <div class="default-message">
-                    👆 Cliquez sur un pin pour voir les détails de l'activité
-                </div>
-            `;
-            
-            activeDetails = null;
-            console.log('❌ Détails fermés');
-        }
-
-        function joinActivity(activityId) {
-            const activity = activitiesData[activityId];
-            if (!activity || activity.isComplete) return;
-
-            // Incrémenter le compteur
-            activity.participants += 1;
-            
-            // Vérifier si complet
-            if (activity.participants >= activity.maxParticipants) {
-                activity.isComplete = true;
-                // Mettre à jour la classe du pin
-                const pin = document.querySelector(`[onclick*="${activityId}"]`);
-                pin.classList.add('complet');
-                pin.classList.remove('disponible');
+                } catch (error) {
+                    console.error('Erreur lors de l\'initialisation:', error);
+                    NotificationManager.show('Erreur d\'initialisation', 'error');
+                }
             }
+        };
 
-            // Notification
-            showNotification(`🎉 Tu as rejoint ${activity.name} !`);
-            
-            // Fermer les détails
-            closeDetails();
-
-            console.log(`✅ Rejoint ${activity.name} - ${activity.participants}/${activity.maxParticipants}`);
+        // Lancement de l'application quand le DOM est prêt
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', App.init);
+        } else {
+            App.init();
         }
 
-        function joinWaitlist(activityId) {
-            const activity = activitiesData[activityId];
-            showNotification(`📝 Tu es ajouté à la liste d'attente pour ${activity.name} !`);
-            closeDetails();
-            console.log(`📝 Liste d'attente pour ${activity.name}`);
+        // Exposer certaines fonctions pour le débogage (en développement uniquement)
+        if (typeof window !== 'undefined') {
+            window.SporlyDebug = {
+                AppState,
+                activitiesData,
+                Utils,
+                version: '2.0.0-optimized'
+            };
         }
-
-        function showNotification(message) {
-            const notification = document.getElementById('joinNotification');
-            const text = document.getElementById('notificationText');
-            
-            text.textContent = message;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Fermer détails en cliquant ailleurs
-        document.addEventListener('click', function(e) {
-            if (activeDetails && !e.target.closest('.details-section') && !e.target.closest('.sport-pin')) {
-                closeDetails();
-            }
-        });
-
-        console.log('🎯 Sporly FINAL avec filtres + zone de détails chargé !');
-        console.log('💡 Filtres : Cliquez sur 🟢 Dispo, 🔴 Complet ou 🔵 Moi pour filtrer');
-        console.log('🔄 Astuce : Cliquez à nouveau sur un filtre actif pour revenir à l\'affichage COMPLET');
-        console.log('📋 Cliquez sur un pin pour voir les détails complets !');
     </script>
 </body>
 </html>
