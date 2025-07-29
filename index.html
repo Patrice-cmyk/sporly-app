@@ -80,29 +80,6 @@
             align-items: flex-start;
         }
         
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
-            width: 35px;
-        }
-        
-        .profile-name {
-            font-size: 11px;
-            color: #f97316;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
-            opacity: 1;
-            text-align: center;
-            margin-top: 1px;
-        }
-        
-        .dark-mode .profile-name {
-            color: #fbbf24;
-        }
-        
         .nav-icon {
             width: 35px;
             height: 35px;
@@ -121,12 +98,19 @@
         .dark-mode .nav-icon { background: rgba(59, 130, 246, 0.1); color: #ffffff; }
         .dark-mode .nav-icon:hover { background: rgba(59, 130, 246, 0.2); }
 
-        /* Profile Avatar Styles */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            width: 35px;
+        }
+        
         .profile-avatar {
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            border: 2px solid #1e40af;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -136,293 +120,35 @@
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             color: white;
             font-weight: bold;
-            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
         }
 
         .profile-avatar:hover {
             transform: scale(1.05);
-            box-shadow: 0 3px 12px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.4);
         }
 
         .dark-mode .profile-avatar {
-            border-color: #3b82f6;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
         }
 
         .dark-mode .profile-avatar:hover {
-            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.5);
         }
-
-        /* Profile Modal Styles */
-        .profile-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .profile-modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .profile-modal-content {
-            background: #ffffff;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 400px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transform: scale(0.9) translateY(20px);
-            transition: all 0.3s ease;
-        }
-
-        .profile-modal.show .profile-modal-content {
-            transform: scale(1) translateY(0);
-        }
-
-        .dark-mode .profile-modal-content {
-            background: #2a2a2a;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .profile-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .dark-mode .profile-header {
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .profile-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e40af;
-        }
-
-        .dark-mode .profile-title {
-            color: #3b82f6;
-        }
-
-        .close-profile {
-            width: 30px;
-            height: 30px;
-            border: none;
-            background: rgba(30, 64, 175, 0.1);
-            border-radius: 50%;
-            color: #1e40af;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-profile:hover {
-            background: rgba(30, 64, 175, 0.2);
-            transform: scale(1.1);
-        }
-
-        .dark-mode .close-profile {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
-
-        .profile-body {
-            padding: 20px;
-        }
-
-        .avatar-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .current-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: white;
-            font-weight: bold;
-            margin: 0 auto 15px;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-        }
-
-        .avatar-label {
-            font-size: 12px;
-            color: #64748b;
-            margin-bottom: 10px;
-        }
-
-        .dark-mode .avatar-label {
-            color: #94a3b8;
-        }
-
-        .avatar-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .avatar-option {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0 auto;
-        }
-
-        .avatar-option:hover {
-            transform: scale(1.1);
-            border-color: #1e40af;
-        }
-
-        .avatar-option.selected {
-            border-color: #f97316;
-            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.3);
-        }
-
-        .dark-mode .avatar-option:hover {
-            border-color: #3b82f6;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: #1e40af;
-            margin-bottom: 5px;
-        }
-
-        .dark-mode .form-label {
-            color: #3b82f6;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid rgba(30, 64, 175, 0.1);
-            border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            background: #ffffff;
-            color: #1e40af;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #f97316;
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-        }
-
-        .dark-mode .form-input {
-            background: #374151;
-            border-color: rgba(59, 130, 246, 0.2);
-            color: #ffffff;
-        }
-
-        .dark-mode .form-input:focus {
-            border-color: #f97316;
-        }
-
-        .form-select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid rgba(30, 64, 175, 0.1);
-            border-radius: 8px;
-            font-size: 14px;
-            background: #ffffff;
-            color: #1e40af;
-            cursor: pointer;
-        }
-
-        .dark-mode .form-select {
-            background: #374151;
-            border-color: rgba(59, 130, 246, 0.2);
-            color: #ffffff;
-        }
-
-        .save-profile-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .save-profile-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(30, 64, 175, 0.1);
-        }
-
-        .dark-mode .profile-stats {
-            border-top: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .stat-mini {
-            text-align: center;
-        }
-
-        .stat-mini-number {
-            font-size: 16px;
-            font-weight: bold;
+        
+        .profile-name {
+            font-size: 11px;
             color: #f97316;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            opacity: 1;
+            text-align: center;
+            margin-top: 1px;
         }
-
-        .stat-mini-label {
-            font-size: 10px;
-            color: #64748b;
-            margin-top: 2px;
-        }
-
-        .dark-mode .stat-mini-label {
-            color: #94a3b8;
+        
+        .dark-mode .profile-name {
+            color: #fbbf24;
         }
         
         .main-content {
@@ -605,101 +331,6 @@
         .dropdown-text { flex: 1; color: #1e40af; font-size: 13px; font-weight: 500; }
         .dark-mode .dropdown-text { color: #3b82f6; }
         
-        .chat-conversation {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            border: 2px solid rgba(30, 64, 175, 0.1);
-            border-top: none;
-            border-radius: 0 0 16px 16px;
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
-            z-index: 15;
-            max-height: 200px;
-            overflow-y: auto;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.3s ease;
-        }
-        
-        .dark-mode .chat-conversation {
-            background: #2a2a2a;
-            border: 2px solid rgba(59, 130, 246, 0.2);
-            border-top: none;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .chat-conversation.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        
-        .chat-message {
-            padding: 8px 12px;
-            margin: 6px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            max-width: 85%;
-            opacity: 0;
-            transform: translateY(8px);
-            animation: messageAppear 0.4s ease forwards;
-        }
-        
-        @keyframes messageAppear { to { opacity: 1; transform: translateY(0); } }
-        
-        .chat-message.bot {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            color: white;
-            margin-left: 10px;
-            margin-right: auto;
-        }
-        
-        .chat-message.user {
-            background: rgba(249, 115, 22, 0.1);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            color: #f97316;
-            margin-left: auto;
-            margin-right: 10px;
-            font-weight: 500;
-        }
-        
-        .dark-mode .chat-message.user {
-            background: rgba(249, 115, 22, 0.15);
-            border: 1px solid rgba(249, 115, 22, 0.3);
-        }
-        
-        .typing-indicator {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            padding: 8px 12px;
-            margin: 6px 10px;
-            margin-right: auto;
-            max-width: 50px;
-            background: #f1f5f9;
-            border-radius: 12px;
-            opacity: 0;
-        }
-        
-        .dark-mode .typing-indicator { background: #374151; }
-        .typing-indicator.show { opacity: 1; animation: messageAppear 0.4s ease forwards; }
-        
-        .typing-dot {
-            width: 4px;
-            height: 4px;
-            background: #64748b;
-            border-radius: 50%;
-            animation: typingDots 1.4s infinite;
-        }
-        
-        .dark-mode .typing-dot { background: #9ca3af; }
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        
-        @keyframes typingDots {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-            30% { transform: translateY(-6px); opacity: 1; }
-        }
-        
         .stats-section {
             background: #ffffff;
             border-radius: 12px;
@@ -800,7 +431,6 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
         
-        /* États de filtrage - CORRIGÉS */
         .filter-dispo .sport-pin:not(.disponible) {
             opacity: 0.2;
             transform: scale(0.8);
@@ -845,7 +475,93 @@
             border: 2px solid rgba(59, 130, 246, 0.2);
         }
 
-        /* NOUVELLE ZONE DE DÉTAILS - ULTRA COMPACTE */
+        .big-map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+        }
+
+        .sport-pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffffff;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.3);
+            z-index: 3;
+        }
+        
+        .sport-pin:hover { 
+            transform: scale(1.15); 
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); 
+        }
+
+        .sport-pin.complet {
+            border: 2px solid #ef4444;
+            box-shadow: 0 3px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .sport-pin.complet:hover {
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+        
+        .dark-mode .sport-pin {
+            background: #2a2a2a;
+            color: #ffffff;
+        }
+        
+        .user-location {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 22px;
+            height: 22px;
+            background: #3b82f6;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            z-index: 4;
+            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: pulseRing 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes pulseRing {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+
         .details-section {
             background: #ffffff;
             border-radius: 10px;
@@ -1071,102 +787,7 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .big-map-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 70%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
-        }
 
-        /* Pins plus petits pour gagner de l'espace */
-        .sport-pin {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: #ffffff;
-            border: 2px solid #10b981;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.3);
-            z-index: 3;
-        }
-        
-        .sport-pin:hover { 
-            transform: scale(1.15); 
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); 
-        }
-
-        /* Pins ROUGES pour matchs complets */
-        .sport-pin.complet {
-            border: 2px solid #ef4444;
-            box-shadow: 0 3px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        .sport-pin.complet:hover {
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
-        }
-        
-        /* Classe pour les pins disponibles */
-        .sport-pin.disponible {
-            /* Déjà stylé comme disponible par défaut */
-        }
-        
-        .dark-mode .sport-pin {
-            background: #2a2a2a;
-            color: #ffffff;
-        }
-        
-        .user-location {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 22px;
-            height: 22px;
-            background: #3b82f6 !important;
-            border: 2px solid #ffffff !important;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: white !important;
-            z-index: 4;
-            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4) !important;
-        }
-        
-        .pulse-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            border: 2px solid #3b82f6 !important;
-            border-radius: 50%;
-            animation: pulseRing 2s infinite;
-            z-index: 2;
-        }
-        
-        @keyframes pulseRing {
-            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-        }
-
-        /* Notification de succès */
         .join-notification {
             position: fixed;
             top: 20px;
@@ -1196,7 +817,6 @@
             .container { max-width: 100%; }
             .main-content { padding: 15px; }
             .big-map-container { height: 250px; }
-            .map-legend { gap: 15px; font-size: 11px; }
         }
     </style>
 </head>
@@ -1254,15 +874,6 @@
                         <div class="dropdown-text">Rechercher un sport</div>
                     </div>
                 </div>
-
-                <div class="chat-conversation" id="chatConversation">
-                    <div id="chatMessages"></div>
-                    <div class="typing-indicator" id="typingIndicator">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                </div>
             </div>
 
             <div class="stats-section">
@@ -1291,43 +902,17 @@
                 </div>
                 
                 <div class="big-map-container">
-                    
-                    <!-- Basketball - 6/10 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" data-activity="basketball">
-                        🏀
-                    </div>
-                    
-                    <!-- Running - 12/20 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" data-activity="running">
-                        🏃‍♂️
-                    </div>
-                    
-                    <!-- Yoga - 15/15 joueurs - ROUGE (COMPLET) -->
-                    <div class="sport-pin complet" style="top: 35%; left: 85%;" data-activity="yoga">
-                        🧘‍♀️
-                    </div>
-                    
-                    <!-- Tennis - 4/4 joueurs - ROUGE (COMPLET) -->
-                    <div class="sport-pin complet" style="top: 75%; left: 55%;" data-activity="tennis">
-                        🎾
-                    </div>
-                    
-                    <!-- Football - 10/22 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" data-activity="football">
-                        ⚽
-                    </div>
-                    
-                    <!-- Swimming - 15/25 joueurs - VERT (places libres) -->
-                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" data-activity="swimming">
-                        🏊‍♀️
-                    </div>
-
+                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" data-activity="basketball">🏀</div>
+                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" data-activity="running">🏃‍♂️</div>
+                    <div class="sport-pin complet" style="top: 35%; left: 85%;" data-activity="yoga">🧘‍♀️</div>
+                    <div class="sport-pin complet" style="top: 75%; left: 55%;" data-activity="tennis">🎾</div>
+                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" data-activity="football">⚽</div>
+                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" data-activity="swimming">🏊‍♀️</div>
                     <div class="user-location">📍</div>
                     <div class="pulse-ring"></div>
                 </div>
             </div>
 
-            <!-- NOUVELLE ZONE DE DÉTAILS -->
             <div class="details-section" id="detailsSection">
                 <div class="details-header">
                     <div class="details-title" id="detailsTitle">Sélectionnez une activité</div>
@@ -1343,215 +928,11 @@
         </div>
     </div>
 
-    <!-- Notification de succès -->
     <div class="join-notification" id="joinNotification">
         <span id="notificationText">🎉 Tu as rejoint le match Basketball !</span>
     </div>
 
-    <!-- Profile Modal -->
-    <div class="profile-modal" id="profileModal">
-        <div class="profile-modal-content">
-            <div class="profile-header">
-                <div class="profile-title" id="profileModalTitle">Mon Profil</div>
-                <button class="close-profile" id="closeProfile">&times;</button>
-            </div>
-            
-            <!-- Vue profil configuré -->
-            <div class="profile-body" id="profileViewMode" style="display: none;">
-                <div class="profile-view">
-                    <div class="current-avatar" id="viewAvatar">👤</div>
-                    <div class="profile-info">
-                        <div class="profile-name" id="viewName">Nom d'utilisateur</div>
-                        <div class="profile-details" id="viewDetails">
-                            Informations du profil
-                        </div>
-                    </div>
-                    
-                    <div class="profile-actions">
-                        <button class="profile-btn edit-profile-btn" id="editProfileBtn">
-                            ✏️ Modifier
-                        </button>
-                        <button class="profile-btn logout-profile-btn" id="logoutProfileBtn">
-                            🚪 Déconnexion
-                        </button>
-                    </div>
-                    
-                    <div class="profile-stats">
-                        <div class="stat-mini">
-                            <div class="stat-mini-number" id="viewActivities">0</div>
-                            <div class="stat-mini-label">Activités</div>
-                        </div>
-                        <div class="stat-mini">
-                            <div class="stat-mini-number" id="viewBadges">0</div>
-                            <div class="stat-mini-label">Badges</div>
-                        </div>
-                        <div class="stat-mini">
-                            <div class="stat-mini-number" id="viewRating">5.0</div>
-                            <div class="stat-mini-label">Note</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Vue édition/création -->
-            <div class="profile-body" id="profileEditMode">
-                <div class="avatar-section-compact">
-                    <div class="current-avatar" id="currentAvatar">👤</div>
-                    <div class="avatar-label">Choisir un avatar</div>
-                    
-                    <div class="avatar-grid">
-                        <div class="avatar-option" data-avatar="🏃‍♂️" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">🏃‍♂️</div>
-                        <div class="avatar-option" data-avatar="🏀" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">🏀</div>
-                        <div class="avatar-option" data-avatar="⚽" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">⚽</div>
-                        <div class="avatar-option" data-avatar="🎾" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);">🎾</div>
-                        <div class="avatar-option" data-avatar="🏊‍♀️" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">🏊‍♀️</div>
-                        <div class="avatar-option" data-avatar="🧘‍♀️" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">🧘‍♀️</div>
-                        <div class="avatar-option" data-avatar="🚴‍♂️" style="background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);">🚴‍♂️</div>
-                        <div class="avatar-option" data-avatar="⛹️‍♀️" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">⛹️‍♀️</div>
-                        <div class="avatar-option" data-avatar="🏋️‍♂️" style="background: linear-gradient(135deg, #64748b 0%, #475569 100%);">🏋️‍♂️</div>
-                        <div class="avatar-option" data-avatar="🤸‍♀️" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🤸‍♀️</div>
-                        <div class="avatar-option" data-avatar="🏄‍♂️" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">🏄‍♂️</div>
-                        <div class="avatar-option" data-avatar="🎯" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">🎯</div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Nom d'utilisateur</label>
-                    <input type="text" class="form-input" id="username" placeholder="Votre nom d'utilisateur">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Âge</label>
-                    <input type="number" class="form-input" id="age" placeholder="Votre âge" min="13" max="100">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Sport préféré</label>
-                    <select class="form-select" id="favoriteSport">
-                        <option value="">Choisir un sport</option>
-                        <option value="basketball">Basketball</option>
-                        <option value="football">Football</option>
-                        <option value="tennis">Tennis</option>
-                        <option value="running">Course à pied</option>
-                        <option value="swimming">Natation</option>
-                        <option value="yoga">Yoga</option>
-                        <option value="cycling">Cyclisme</option>
-                        <option value="fitness">Fitness</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Niveau</label>
-                    <select class="form-select" id="skillLevel">
-                        <option value="">Choisir un niveau</option>
-                        <option value="beginner">Débutant</option>
-                        <option value="intermediate">Intermédiaire</option>
-                        <option value="advanced">Avancé</option>
-                        <option value="expert">Expert</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Bio (optionnel)</label>
-                    <input type="text" class="form-input" id="bio" placeholder="Parlez de vous en quelques mots...">
-                </div>
-                
-                <button class="save-profile-btn" id="saveProfile">
-                    💾 Sauvegarder le profil
-                </button>
-                
-                <div class="profile-stats">
-                    <div class="stat-mini">
-                        <div class="stat-mini-number" id="profileActivities">0</div>
-                        <div class="stat-mini-label">Activités</div>
-                    </div>
-                    <div class="stat-mini">
-                        <div class="stat-mini-number" id="profileBadges">0</div>
-                        <div class="stat-mini-label">Badges</div>
-                    </div>
-                    <div class="stat-mini">
-                        <div class="stat-mini-number" id="profileRating">5.0</div>
-                        <div class="stat-mini-label">Note</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>="🏊‍♀️" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">🏊‍♀️</div>
-                        <div class="avatar-option" data-avatar="🧘‍♀️" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">🧘‍♀️</div>
-                        <div class="avatar-option" data-avatar="🚴‍♂️" style="background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);">🚴‍♂️</div>
-                        <div class="avatar-option" data-avatar="⛹️‍♀️" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">⛹️‍♀️</div>
-                        <div class="avatar-option" data-avatar="🏋️‍♂️" style="background: linear-gradient(135deg, #64748b 0%, #475569 100%);">🏋️‍♂️</div>
-                        <div class="avatar-option" data-avatar="🤸‍♀️" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🤸‍♀️</div>
-                        <div class="avatar-option" data-avatar="🏄‍♂️" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">🏄‍♂️</div>
-                        <div class="avatar-option" data-avatar="🎯" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">🎯</div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Nom d'utilisateur</label>
-                    <input type="text" class="form-input" id="username" placeholder="Votre nom d'utilisateur">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Âge</label>
-                    <input type="number" class="form-input" id="age" placeholder="Votre âge" min="13" max="100">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Sport préféré</label>
-                    <select class="form-select" id="favoriteSport">
-                        <option value="">Choisir un sport</option>
-                        <option value="basketball">Basketball</option>
-                        <option value="football">Football</option>
-                        <option value="tennis">Tennis</option>
-                        <option value="running">Course à pied</option>
-                        <option value="swimming">Natation</option>
-                        <option value="yoga">Yoga</option>
-                        <option value="cycling">Cyclisme</option>
-                        <option value="fitness">Fitness</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Niveau</label>
-                    <select class="form-select" id="skillLevel">
-                        <option value="">Choisir un niveau</option>
-                        <option value="beginner">Débutant</option>
-                        <option value="intermediate">Intermédiaire</option>
-                        <option value="advanced">Avancé</option>
-                        <option value="expert">Expert</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Bio (optionnel)</label>
-                    <input type="text" class="form-input" id="bio" placeholder="Parlez de vous en quelques mots...">
-                </div>
-                
-                <button class="save-profile-btn" id="saveProfile">
-                    💾 Sauvegarder le profil
-                </button>
-                
-                <div class="profile-stats">
-                    <div class="stat-mini">
-                        <div class="stat-mini-number" id="profileActivities">0</div>
-                        <div class="stat-mini-label">Activités</div>
-                    </div>
-                    <div class="stat-mini">
-                        <div class="stat-mini-number" id="profileBadges">0</div>
-                        <div class="stat-mini-label">Badges</div>
-                    </div>
-                    <div class="stat-mini">
-                        <div class="stat-mini-number" id="profileRating">5.0</div>
-                        <div class="stat-mini-label">Note</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Configuration et variables globales
         const AppConfig = {
             TYPING_DELAY: 800,
             MESSAGE_DELAY: 1200,
@@ -1559,7 +940,6 @@
             CONVERSATION_TIMEOUT: 1200
         };
 
-        // État de l'application
         const AppState = {
             isDarkMode: false,
             activeFilter: null,
@@ -1581,7 +961,6 @@
             }
         };
 
-        // Données des conversations optimisées
         const conversations = {
             'Créer un match': [
                 { type: 'bot', text: 'Super ! Quel sport veux-tu pratiquer ?' },
@@ -1611,7 +990,6 @@
             ]
         };
 
-        // Données des activités optimisées avec validation
         const activitiesData = {
             basketball: {
                 name: 'Basketball Match',
@@ -1687,7 +1065,6 @@
             }
         };
 
-        // Utilitaires
         const Utils = {
             getElement: (id) => document.getElementById(id),
             
@@ -1697,18 +1074,6 @@
                 } else {
                     element.classList.toggle(className);
                 }
-            },
-
-            debounce: (func, wait) => {
-                let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func(...args);
-                    };
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                };
             },
 
             updateStats: () => {
@@ -1722,266 +1087,15 @@
             }
         };
 
-        // Gestionnaire du profil utilisateur
         const ProfileManager = {
             init() {
                 const profileAvatar = Utils.getElement('profileAvatar');
-                const closeProfile = Utils.getElement('closeProfile');
-                const saveProfile = Utils.getElement('saveProfile');
-                const editProfileBtn = Utils.getElement('editProfileBtn');
-                const logoutProfileBtn = Utils.getElement('logoutProfileBtn');
-                const avatarOptions = document.querySelectorAll('.avatar-option');
-
-                profileAvatar?.addEventListener('click', this.openProfile.bind(this));
-                closeProfile?.addEventListener('click', this.closeProfile.bind(this));
-                saveProfile?.addEventListener('click', this.saveProfile.bind(this));
-                editProfileBtn?.addEventListener('click', this.switchToEditMode.bind(this));
-                logoutProfileBtn?.addEventListener('click', this.logoutProfile.bind(this));
-
-                // Gestionnaire de sélection d'avatar
-                avatarOptions.forEach(option => {
-                    option.addEventListener('click', this.selectAvatar.bind(this));
-                });
-
-                // Fermer la modal en cliquant à l'extérieur
-                const profileModal = Utils.getElement('profileModal');
-                profileModal?.addEventListener('click', (e) => {
-                    if (e.target === profileModal) {
-                        this.closeProfile();
-                    }
-                });
-
-                // Charger le profil sauvegardé
+                profileAvatar?.addEventListener('click', this.showSimpleAlert.bind(this));
                 this.loadProfile();
             },
 
-            openProfile() {
-                const modal = Utils.getElement('profileModal');
-                modal?.classList.add('show');
-                
-                // Déterminer quelle vue afficher
-                if (this.hasCompleteProfile()) {
-                    this.showViewMode();
-                } else {
-                    this.showEditMode();
-                }
-            },
-
-            closeProfile() {
-                const modal = Utils.getElement('profileModal');
-                modal?.classList.remove('show');
-            },
-
-            hasCompleteProfile() {
-                const profile = AppState.userProfile;
-                return profile.username && profile.username.trim() !== '';
-            },
-
-            showViewMode() {
-                Utils.getElement('profileViewMode').style.display = 'block';
-                Utils.getElement('profileEditMode').style.display = 'none';
-                Utils.getElement('profileModalTitle').textContent = 'Mon Profil';
-                this.populateViewMode();
-            },
-
-            showEditMode() {
-                Utils.getElement('profileViewMode').style.display = 'none';
-                Utils.getElement('profileEditMode').style.display = 'block';
-                Utils.getElement('profileModalTitle').textContent = this.hasCompleteProfile() ? 'Modifier le profil' : 'Créer mon profil';
-                this.populateEditMode();
-            },
-
-            switchToEditMode() {
-                this.showEditMode();
-            },
-
-            populateViewMode() {
-                const profile = AppState.userProfile;
-                
-                // Avatar et nom
-                const viewAvatar = Utils.getElement('viewAvatar');
-                if (viewAvatar) {
-                    viewAvatar.textContent = profile.avatar;
-                    if (profile.avatarStyle) {
-                        viewAvatar.style.background = profile.avatarStyle;
-                    }
-                }
-                
-                Utils.getElement('viewName').textContent = profile.username || 'Utilisateur';
-                
-                // Détails du profil
-                const details = [];
-                if (profile.age) details.push(`${profile.age} ans`);
-                if (profile.favoriteSport) {
-                    const sports = {
-                        'basketball': 'Basketball', 'football': 'Football', 'tennis': 'Tennis',
-                        'running': 'Course à pied', 'swimming': 'Natation', 'yoga': 'Yoga',
-                        'cycling': 'Cyclisme', 'fitness': 'Fitness'
-                    };
-                    details.push(sports[profile.favoriteSport] || profile.favoriteSport);
-                }
-                if (profile.skillLevel) details.push(this.getUserLevel());
-                if (profile.bio) details.push(`"${profile.bio}"`);
-                
-                Utils.getElement('viewDetails').textContent = details.length > 0 ? details.join(' • ') : 'Aucune information supplémentaire';
-                
-                // Statistiques
-                Utils.getElement('viewActivities').textContent = profile.activitiesJoined;
-                Utils.getElement('viewBadges').textContent = profile.badges;
-                Utils.getElement('viewRating').textContent = profile.rating.toFixed(1);
-            },
-
-            populateEditMode() {
-                const profile = AppState.userProfile;
-                
-                // Remplir les champs
-                Utils.getElement('username').value = profile.username || '';
-                Utils.getElement('age').value = profile.age || '';
-                Utils.getElement('favoriteSport').value = profile.favoriteSport || '';
-                Utils.getElement('skillLevel').value = profile.skillLevel || '';
-                Utils.getElement('bio').value = profile.bio || '';
-
-                // Mettre à jour l'avatar actuel
-                const currentAvatar = Utils.getElement('currentAvatar');
-                if (currentAvatar) {
-                    currentAvatar.textContent = profile.avatar;
-                    if (profile.avatarStyle) {
-                        currentAvatar.style.background = profile.avatarStyle;
-                    }
-                }
-
-                // Sélectionner l'avatar correspondant
-                document.querySelectorAll('.avatar-option').forEach(option => {
-                    option.classList.remove('selected');
-                    if (option.dataset.avatar === profile.avatar) {
-                        option.classList.add('selected');
-                    }
-                });
-
-                // Mettre à jour les statistiques
-                Utils.getElement('profileActivities').textContent = profile.activitiesJoined;
-                Utils.getElement('profileBadges').textContent = profile.badges;
-                Utils.getElement('profileRating').textContent = profile.rating.toFixed(1);
-            },
-
-            selectAvatar(e) {
-                const avatarData = e.currentTarget.dataset.avatar;
-                const avatarStyle = e.currentTarget.style.background;
-                
-                if (!avatarData) return;
-
-                // Désélectionner tous les avatars
-                document.querySelectorAll('.avatar-option').forEach(option => {
-                    option.classList.remove('selected');
-                });
-
-                // Sélectionner le nouvel avatar
-                e.currentTarget.classList.add('selected');
-
-                // Mettre à jour l'aperçu
-                const currentAvatar = Utils.getElement('currentAvatar');
-                if (currentAvatar) {
-                    currentAvatar.textContent = avatarData;
-                    currentAvatar.style.background = avatarStyle;
-                }
-
-                // Mettre à jour l'état temporairement
-                AppState.userProfile.avatar = avatarData;
-                AppState.userProfile.avatarStyle = avatarStyle;
-            },
-
-            saveProfile() {
-                const profile = AppState.userProfile;
-                
-                // Récupérer les valeurs des champs
-                const username = Utils.getElement('username').value.trim();
-                const age = Utils.getElement('age').value;
-                const favoriteSport = Utils.getElement('favoriteSport').value;
-                const skillLevel = Utils.getElement('skillLevel').value;
-                const bio = Utils.getElement('bio').value.trim();
-
-                // Validation basique
-                if (!username) {
-                    NotificationManager.show('❌ Le nom d\'utilisateur est requis', 'error');
-                    return;
-                }
-
-                if (age && (age < 13 || age > 100)) {
-                    NotificationManager.show('❌ L\'âge doit être entre 13 et 100 ans', 'error');
-                    return;
-                }
-
-                // Mettre à jour le profil
-                profile.username = username;
-                profile.age = age;
-                profile.favoriteSport = favoriteSport;
-                profile.skillLevel = skillLevel;
-                profile.bio = bio;
-
-                // Sauvegarder et mettre à jour l'UI
-                this.saveToStorage();
-                this.updateUI();
-                this.closeProfile();
-
-                NotificationManager.show('✅ Profil sauvegardé avec succès !');
-            },
-
-            logoutProfile() {
-                if (confirm('Êtes-vous sûr de vouloir supprimer votre profil ?')) {
-                    // Réinitialiser le profil
-                    AppState.userProfile = {
-                        avatar: '👤',
-                        username: '',
-                        age: '',
-                        favoriteSport: '',
-                        skillLevel: '',
-                        bio: '',
-                        activitiesJoined: 0,
-                        badges: 0,
-                        rating: 5.0
-                    };
-                    
-                    // Supprimer du localStorage
-                    localStorage.removeItem('sporly_profile');
-                    
-                    // Mettre à jour l'UI
-                    this.updateUI();
-                    this.closeProfile();
-                    
-                    NotificationManager.show('👋 Profil supprimé');
-                }
-            },
-
-            updateUI() {
-                const profile = AppState.userProfile;
-                const profileAvatar = Utils.getElement('profileAvatar');
-                const profileName = Utils.getElement('profileName');
-                
-                if (profileAvatar) {
-                    profileAvatar.textContent = profile.avatar;
-                    if (profile.avatarStyle) {
-                        profileAvatar.style.background = profile.avatarStyle;
-                    }
-                }
-
-                // Afficher/masquer le nom sous l'avatar
-                if (profileName) {
-                    if (profile.username && profile.username.trim() !== '') {
-                        profileName.textContent = `Salut ${profile.username}`;
-                        profileName.style.display = 'block';
-                    } else {
-                        profileName.style.display = 'none';
-                    }
-                }
-            },
-
-            saveToStorage() {
-                try {
-                    const data = JSON.stringify(AppState.userProfile);
-                    localStorage.setItem('sporly_profile', data);
-                } catch (error) {
-                    console.warn('Impossible de sauvegarder le profil:', error);
-                }
+            showSimpleAlert() {
+                alert('Fonctionnalité de profil en cours de développement !');
             },
 
             loadProfile() {
@@ -1997,26 +1111,47 @@
                 }
             },
 
+            updateUI() {
+                const profile = AppState.userProfile;
+                const profileAvatar = Utils.getElement('profileAvatar');
+                const profileName = Utils.getElement('profileName');
+                
+                if (profileAvatar) {
+                    profileAvatar.textContent = profile.avatar;
+                    if (profile.avatarStyle) {
+                        profileAvatar.style.background = profile.avatarStyle;
+                    }
+                }
+
+                if (profileName) {
+                    if (profile.username && profile.username.trim() !== '') {
+                        profileName.textContent = `Salut ${profile.username}`;
+                        profileName.style.display = 'block';
+                    } else {
+                        profileName.style.display = 'none';
+                    }
+                }
+            },
+
             incrementActivities() {
                 AppState.userProfile.activitiesJoined += 1;
                 this.saveToStorage();
             },
 
-            getDisplayName() {
-                return AppState.userProfile.username || 'Joueur';
+            saveToStorage() {
+                try {
+                    const data = JSON.stringify(AppState.userProfile);
+                    localStorage.setItem('sporly_profile', data);
+                } catch (error) {
+                    console.warn('Impossible de sauvegarder le profil:', error);
+                }
             },
 
-            getUserLevel() {
-                const level = AppState.userProfile.skillLevel;
-                const levels = {
-                    'beginner': 'Débutant',
-                    'intermediate': 'Intermédiaire', 
-                    'advanced': 'Avancé',
-                    'expert': 'Expert'
-                };
-                return levels[level] || 'Non défini';
+            getDisplayName() {
+                return AppState.userProfile.username || 'Joueur';
             }
         };
+
         const DarkModeManager = {
             init() {
                 const darkModeBtn = Utils.getElement('darkModeBtn');
@@ -2030,7 +1165,6 @@
             }
         };
 
-        // Gestionnaire des conversations
         const ConversationManager = {
             init() {
                 const assistantTrigger = Utils.getElement('assistantTrigger');
@@ -2041,7 +1175,6 @@
                 dropdownArrow?.addEventListener('click', this.handleDropdownClick.bind(this));
                 micButton?.addEventListener('click', this.handleMicClick.bind(this));
 
-                // Délégation d'événements pour les éléments du dropdown
                 const dropdown = Utils.getElement('assistantDropdown');
                 dropdown?.addEventListener('click', this.handleDropdownItemClick.bind(this));
             },
@@ -2062,7 +1195,7 @@
                 e.preventDefault();
                 
                 if (AppState.currentAction && !AppState.isListening) {
-                    this.startVoiceConversation();
+                    alert('Conversation vocale en développement !');
                 } else {
                     this.toggleDropdown();
                 }
@@ -2112,95 +1245,9 @@
                 Utils.getElement('assistantDropdown').classList.remove('show');
                 trigger.classList.remove('open');
                 AppState.isDropdownOpen = false;
-            },
-
-            startVoiceConversation() {
-                if (!conversations[AppState.currentAction]) {
-                    NotificationManager.show('Fonction en développement...', 'info');
-                    return;
-                }
-
-                AppState.conversationStep = 0;
-                AppState.isListening = true;
-                
-                const trigger = Utils.getElement('assistantTrigger');
-                const micBtn = Utils.getElement('micButton');
-                const conversation = Utils.getElement('chatConversation');
-                const messagesContainer = Utils.getElement('chatMessages');
-                
-                messagesContainer.innerHTML = '';
-                trigger.classList.add('listening');
-                micBtn.classList.add('listening');
-                conversation.classList.add('show');
-                
-                setTimeout(() => this.processConversation(), 1000);
-            },
-
-            processConversation() {
-                const conversationData = conversations[AppState.currentAction];
-                
-                if (AppState.conversationStep >= conversationData.length) {
-                    this.finishConversation();
-                    return;
-                }
-                
-                const currentMessage = conversationData[AppState.conversationStep];
-                
-                if (currentMessage.type === 'bot') {
-                    this.showTyping();
-                    setTimeout(() => {
-                        this.hideTyping();
-                        this.addMessage(currentMessage.type, currentMessage.text);
-                        AppState.conversationStep++;
-                        setTimeout(() => this.processConversation(), AppConfig.MESSAGE_DELAY);
-                    }, AppConfig.TYPING_DELAY);
-                } else {
-                    setTimeout(() => {
-                        this.addMessage(currentMessage.type, currentMessage.text);
-                        AppState.conversationStep++;
-                        setTimeout(() => this.processConversation(), AppConfig.TYPING_DELAY);
-                    }, 600);
-                }
-            },
-
-            showTyping() {
-                Utils.getElement('typingIndicator')?.classList.add('show');
-            },
-
-            hideTyping() {
-                Utils.getElement('typingIndicator')?.classList.remove('show');
-            },
-
-            addMessage(type, text) {
-                const messagesContainer = Utils.getElement('chatMessages');
-                if (!messagesContainer) return;
-
-                const message = document.createElement('div');
-                message.className = `chat-message ${type}`;
-                message.textContent = text;
-                messagesContainer.appendChild(message);
-                
-                const conversation = Utils.getElement('chatConversation');
-                if (conversation) {
-                    conversation.scrollTop = conversation.scrollHeight;
-                }
-            },
-
-            finishConversation() {
-                const trigger = Utils.getElement('assistantTrigger');
-                const micBtn = Utils.getElement('micButton');
-                
-                trigger?.classList.remove('listening');
-                micBtn?.classList.remove('listening');
-                AppState.isListening = false;
-                
-                setTimeout(() => {
-                    Utils.getElement('chatConversation')?.classList.remove('show');
-                }, AppConfig.CONVERSATION_TIMEOUT);
             }
         };
 
-        // Gestionnaire des filtres
         const FilterManager = {
             init() {
                 const legendItems = document.querySelectorAll('.legend-item');
@@ -2216,7 +1263,6 @@
                 const mapContainer = document.querySelector('.big-map-container');
                 const allLegendItems = document.querySelectorAll('.legend-item');
                 
-                // Si on clique sur le filtre déjà actif, on le désactive
                 if (AppState.activeFilter === filterType) {
                     mapContainer.className = 'big-map-container';
                     e.currentTarget.classList.remove('active');
@@ -2224,17 +1270,14 @@
                     return;
                 }
                 
-                // Désactiver tous les autres filtres
                 allLegendItems.forEach(item => item.classList.remove('active'));
                 
-                // Activer le nouveau filtre
                 AppState.activeFilter = filterType;
                 e.currentTarget.classList.add('active');
                 mapContainer.className = `big-map-container filter-${filterType}`;
             }
         };
 
-        // Gestionnaire des détails d'activité
         const DetailsManager = {
             init() {
                 const sportPins = document.querySelectorAll('.sport-pin');
@@ -2244,7 +1287,6 @@
 
                 Utils.getElement('closeDetails')?.addEventListener('click', this.closeDetails.bind(this));
                 
-                // Fermer détails en cliquant ailleurs
                 document.addEventListener('click', this.handleOutsideClick.bind(this));
             },
 
@@ -2273,10 +1315,8 @@
 
                 if (!detailsSection || !detailsTitle || !detailsContent) return;
 
-                // Mettre à jour le titre
                 detailsTitle.textContent = activity.name;
 
-                // Créer le contenu détaillé
                 detailsContent.innerHTML = `
                     <div class="activity-details">
                         <div class="activity-header">
@@ -2305,17 +1345,14 @@
                     </div>
                 `;
 
-                // Ajouter les gestionnaires d'événements pour les boutons
                 const actionButtons = detailsContent.querySelectorAll('[data-action]');
                 actionButtons.forEach(btn => {
                     btn.addEventListener('click', this.handleActionClick.bind(this));
                 });
 
-                // Activer la section
                 detailsSection.classList.add('active');
                 AppState.activeDetails = activityId;
 
-                // Scroll vers la zone de détails
                 detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             },
 
@@ -2349,19 +1386,15 @@
             }
         };
 
-        // Gestionnaire des activités
         const ActivityManager = {
             joinActivity(activityId) {
                 const activity = activitiesData[activityId];
                 if (!activity || activity.isComplete) return;
 
-                // Incrémenter le compteur
                 activity.participants += 1;
                 
-                // Vérifier si complet
                 if (activity.participants >= activity.maxParticipants) {
                     activity.isComplete = true;
-                    // Mettre à jour la classe du pin
                     const pin = document.querySelector(`[data-activity="${activityId}"]`);
                     if (pin) {
                         pin.classList.add('complet');
@@ -2369,16 +1402,12 @@
                     }
                 }
 
-                // Mettre à jour les statistiques
                 Utils.updateStats();
 
-                // Notification
                 NotificationManager.show(`🎉 ${ProfileManager.getDisplayName()} a rejoint ${activity.name} !`);
                 
-                // Incrémenter le compteur d'activités du profil
                 ProfileManager.incrementActivities();
                 
-                // Fermer les détails
                 DetailsManager.closeDetails();
             },
 
@@ -2391,7 +1420,6 @@
             }
         };
 
-        // Gestionnaire des notifications
         const NotificationManager = {
             show(message, type = 'success') {
                 const notification = Utils.getElement('joinNotification');
@@ -2408,52 +1436,22 @@
             }
         };
 
-        // Gestionnaire des événements globaux
         const EventManager = {
             init() {
-                // Fermer les dropdowns/conversations en cliquant ailleurs
                 document.addEventListener('click', this.handleGlobalClick.bind(this));
-                
-                // Gestion des erreurs globales
-                window.addEventListener('error', this.handleError.bind(this));
             },
 
             handleGlobalClick(event) {
-                // Fermer conversation si clic à l'extérieur
-                const chatConversation = Utils.getElement('chatConversation');
-                if (chatConversation?.classList.contains('show') && 
-                    !event.target.closest('.assistant-container')) {
-                    chatConversation.classList.remove('show');
-                }
-
-                // Fermer dropdown si clic à l'extérieur
                 if (AppState.isDropdownOpen && 
                     !event.target.closest('.assistant-container')) {
                     ConversationManager.toggleDropdown();
                 }
-            },
-
-            handleError(event) {
-                console.error('Erreur capturée:', event.error);
-                NotificationManager.show('Une erreur est survenue', 'error');
             }
         };
 
-        // Initialisation de l'application
         const App = {
             init() {
                 try {
-                    // Vérifier que tous les éléments essentiels sont présents
-                    const essentialElements = [
-                        'darkModeBtn', 'assistantTrigger', 'detailsSection'
-                    ];
-                    
-                    const missingElements = essentialElements.filter(id => !Utils.getElement(id));
-                    if (missingElements.length > 0) {
-                        console.warn('Éléments manquants:', missingElements);
-                    }
-
-                    // Initialiser tous les gestionnaires
                     ProfileManager.init();
                     DarkModeManager.init();
                     ConversationManager.init();
@@ -2461,40 +1459,20 @@
                     DetailsManager.init();
                     EventManager.init();
 
-                    // Mettre à jour les statistiques initiales
                     Utils.updateStats();
 
-                    console.log('🎯 Sporly OPTIMISÉ chargé avec succès !');
-                    console.log('✅ Améliorations apportées:');
-                    console.log('   - Code modulaire et organisé');
-                    console.log('   - Gestion d\'erreurs améliorée');
-                    console.log('   - Performance optimisée');
-                    console.log('   - Délégation d\'événements');
-                    console.log('   - Validation des données');
-                    console.log('   - Utilitaires réutilisables');
+                    console.log('🎯 Sporly chargé avec succès !');
 
                 } catch (error) {
                     console.error('Erreur lors de l\'initialisation:', error);
-                    NotificationManager.show('Erreur d\'initialisation', 'error');
                 }
             }
         };
 
-        // Lancement de l'application quand le DOM est prêt
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', App.init);
         } else {
             App.init();
-        }
-
-        // Exposer certaines fonctions pour le débogage (en développement uniquement)
-        if (typeof window !== 'undefined') {
-            window.SporlyDebug = {
-                AppState,
-                activitiesData,
-                Utils,
-                version: '2.0.0-optimized'
-            };
         }
     </script>
 </body>
