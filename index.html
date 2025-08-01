@@ -29,7 +29,7 @@
         
         .navbar {
             background: #ffffff;
-            padding: 10px 20px;
+            padding: 15px 20px;
             box-shadow: 0 2px 10px rgba(30, 64, 175, 0.1);
             display: flex;
             justify-content: space-between;
@@ -74,11 +74,7 @@
             margin-left: 4px;
         }
         
-        .nav-icons { 
-            display: flex; 
-            gap: 10px; 
-            align-items: flex-start;
-        }
+        .nav-icons { display: flex; gap: 10px; }
         
         .nav-icon {
             width: 35px;
@@ -97,64 +93,11 @@
         .nav-icon:hover { background: rgba(30, 64, 175, 0.2); }
         .dark-mode .nav-icon { background: rgba(59, 130, 246, 0.1); color: #ffffff; }
         .dark-mode .nav-icon:hover { background: rgba(59, 130, 246, 0.2); }
-
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
-            width: 35px;
-        }
-        
-        .profile-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 16px;
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
-        }
-
-        .profile-avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.4);
-        }
-
-        .dark-mode .profile-avatar {
-            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
-        }
-
-        .dark-mode .profile-avatar:hover {
-            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.5);
-        }
-        
-        .profile-name {
-            font-size: 11px;
-            color: #f97316;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
-            opacity: 1;
-            text-align: center;
-            margin-top: 1px;
-        }
-        
-        .dark-mode .profile-name {
-            color: #fbbf24;
-        }
         
         .main-content {
             padding: 10px;
             background: #f8fafc;
-            min-height: calc(100vh - 55px);
+            min-height: calc(100vh - 65px);
             transition: all 0.3s ease;
         }
         
@@ -331,6 +274,101 @@
         .dropdown-text { flex: 1; color: #1e40af; font-size: 13px; font-weight: 500; }
         .dark-mode .dropdown-text { color: #3b82f6; }
         
+        .chat-conversation {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 2px solid rgba(30, 64, 175, 0.1);
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
+            z-index: 15;
+            max-height: 200px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .chat-conversation {
+            background: #2a2a2a;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-top: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chat-conversation.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        .chat-message {
+            padding: 8px 12px;
+            margin: 6px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            max-width: 85%;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: messageAppear 0.4s ease forwards;
+        }
+        
+        @keyframes messageAppear { to { opacity: 1; transform: translateY(0); } }
+        
+        .chat-message.bot {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            margin-left: 10px;
+            margin-right: auto;
+        }
+        
+        .chat-message.user {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            color: #f97316;
+            margin-left: auto;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+        
+        .dark-mode .chat-message.user {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            padding: 8px 12px;
+            margin: 6px 10px;
+            margin-right: auto;
+            max-width: 50px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            opacity: 0;
+        }
+        
+        .dark-mode .typing-indicator { background: #374151; }
+        .typing-indicator.show { opacity: 1; animation: messageAppear 0.4s ease forwards; }
+        
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: #64748b;
+            border-radius: 50%;
+            animation: typingDots 1.4s infinite;
+        }
+        
+        .dark-mode .typing-dot { background: #9ca3af; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typingDots {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-6px); opacity: 1; }
+        }
+        
         .stats-section {
             background: #ffffff;
             border-radius: 12px;
@@ -475,93 +513,6 @@
             border: 2px solid rgba(59, 130, 246, 0.2);
         }
 
-        .big-map-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 70%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
-        }
-
-        .sport-pin {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: #ffffff;
-            border: 2px solid #10b981;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.3);
-            z-index: 3;
-        }
-        
-        .sport-pin:hover { 
-            transform: scale(1.15); 
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); 
-        }
-
-        .sport-pin.complet {
-            border: 2px solid #ef4444;
-            box-shadow: 0 3px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        .sport-pin.complet:hover {
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
-        }
-        
-        .dark-mode .sport-pin {
-            background: #2a2a2a;
-            color: #ffffff;
-        }
-        
-        .user-location {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 22px;
-            height: 22px;
-            background: #3b82f6;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: white;
-            z-index: 4;
-            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4);
-        }
-        
-        .pulse-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            border: 2px solid #3b82f6;
-            border-radius: 50%;
-            animation: pulseRing 2s infinite;
-            z-index: 2;
-        }
-        
-        @keyframes pulseRing {
-            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-        }
-
         .details-section {
             background: #ffffff;
             border-radius: 10px;
@@ -570,14 +521,17 @@
             border: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.4s ease;
             min-height: 50px;
-            opacity: 0.7;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
         }
 
         .details-section.active {
             opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
             box-shadow: 0 3px 15px rgba(30, 64, 175, 0.15);
             border: 1px solid rgba(30, 64, 175, 0.2);
-            transform: translateY(-1px);
         }
 
         .dark-mode .details-section {
@@ -628,13 +582,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .details-section.active .close-details {
-            opacity: 1;
-            pointer-events: auto;
         }
 
         .close-details:hover {
@@ -776,16 +723,380 @@
             box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
         }
 
-        .full-detail-btn {
-            background: rgba(100, 116, 139, 0.1);
-            color: #64748b;
-            cursor: not-allowed;
-            border: 1px solid rgba(100, 116, 139, 0.2);
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* STYLES CALENDRIER - maintenant intégrés dans details-section */
+
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 5px;
+        }
+
+        .nav-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 50%;
+            color: #1e40af;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(30, 64, 175, 0.2);
+            transform: scale(1.1);
+        }
+
+        .dark-mode .nav-btn {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .dark-mode .nav-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .week-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e40af;
+            text-align: center;
+        }
+
+        .dark-mode .week-title {
+            color: #3b82f6;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            margin-bottom: 15px;
+        }
+
+        .day-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .day-header {
+            font-size: 10px;
+            font-weight: 600;
+            color: #64748b;
+            padding: 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dark-mode .day-header {
+            color: #94a3b8;
+        }
+
+        .day-number {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 500;
+            color: #1e40af;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .day-number.today {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            font-weight: 700;
+        }
+
+        .day-number.has-events {
+            background: rgba(30, 64, 175, 0.1);
+            border: 1px solid rgba(30, 64, 175, 0.2);
+        }
+
+        .day-number:hover {
+            background: rgba(30, 64, 175, 0.15);
+            transform: scale(1.1);
+        }
+
+        .dark-mode .day-number {
+            color: #3b82f6;
+        }
+
+        .dark-mode .day-number.has-events {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .dark-mode .day-number:hover {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .day-events {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-height: 40px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .event-dot {
+            width: 20px;
+            height: 12px;
+            border-radius: 6px;
+            font-size: 8px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .event-dot:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+
+        .event-dot.basketball {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+
+        .event-dot.running {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .event-dot.yoga {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+        }
+
+        .event-dot.tennis {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .event-dot.football {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .calendar-summary {
+            border-top: 1px solid rgba(30, 64, 175, 0.1);
+            padding: 10px 5px 0;
+        }
+
+        .dark-mode .calendar-summary {
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .summary-stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .dark-mode .summary-item {
+            color: #94a3b8;
+        }
+
+        .summary-icon {
+            font-size: 14px;
+        }
+
+        .summary-text {
+            white-space: nowrap;
+        }
+
+        /* BARRE DE NAVIGATION ASSISTANT */
+        .assistant-nav-bar {
+            display: flex;
+            gap: 18px;
+            margin: 8px 0;
+            padding: 10px 15px;
+            background: rgba(30, 64, 175, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            justify-content: center;
+        }
+
+        .dark-mode .assistant-nav-bar {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-action-btn {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(30, 64, 175, 0.15);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.4;
+            transform: scale(0.9);
+            box-shadow: 0 2px 6px rgba(30, 64, 175, 0.1);
+        }
+
+        .nav-action-btn:hover {
+            opacity: 0.6;
+            transform: scale(0.95);
+            box-shadow: 0 3px 8px rgba(30, 64, 175, 0.15);
+        }
+
+        .nav-action-btn.active {
+            opacity: 1;
+            transform: scale(1);
+            background: #ffffff;
+            border-color: rgba(249, 115, 22, 0.4);
+            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        .nav-action-btn.opened {
+            opacity: 0.8;
+            transform: scale(0.95);
+            background: rgba(30, 64, 175, 0.1);
+            border-color: rgba(30, 64, 175, 0.3);
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+        }
+
+        .dark-mode .nav-action-btn {
+            background: rgba(42, 42, 42, 0.8);
+            border-color: rgba(59, 130, 246, 0.15);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .nav-action-btn.active {
+            background: #2a2a2a;
+            border-color: rgba(249, 115, 22, 0.5);
+            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.4);
+        }
+
+        .dark-mode .nav-action-btn.opened {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-action-icon {
+            font-size: 14px;
+        }
+        
+        .big-map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+        }
+
+        .sport-pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffffff;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.3);
+            z-index: 3;
+        }
+        
+        .sport-pin:hover { 
+            transform: scale(1.15); 
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); 
+        }
+
+        .sport-pin.complet {
+            border: 2px solid #ef4444;
+            box-shadow: 0 3px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .sport-pin.complet:hover {
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+        
+        .sport-pin.disponible {
+        }
+        
+        .dark-mode .sport-pin {
+            background: #2a2a2a;
+            color: #ffffff;
+        }
+        
+        .user-location {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 22px;
+            height: 22px;
+            background: #3b82f6 !important;
+            border: 2px solid #ffffff !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white !important;
+            z-index: 4;
+            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4) !important;
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border: 2px solid #3b82f6 !important;
+            border-radius: 50%;
+            animation: pulseRing 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes pulseRing {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
         }
 
         .join-notification {
@@ -817,6 +1128,7 @@
             .container { max-width: 100%; }
             .main-content { padding: 15px; }
             .big-map-container { height: 250px; }
+            .map-legend { gap: 15px; font-size: 11px; }
         }
     </style>
 </head>
@@ -833,10 +1145,7 @@
             <div class="nav-icons">
                 <button class="nav-icon" id="darkModeBtn">🌙</button>
                 <button class="nav-icon">🔔</button>
-                <div class="profile-section">
-                    <div class="profile-avatar" id="profileAvatar">👤</div>
-                    <div class="profile-name" id="profileName" style="display: none;">Salut Patrice</div>
-                </div>
+                <button class="nav-icon">👤</button>
                 <button class="nav-icon">📤</button>
             </div>
         </nav>
@@ -853,25 +1162,38 @@
                 </div>
                 
                 <div class="assistant-dropdown" id="assistantDropdown">
-                    <div class="dropdown-item" data-action="Créer un match" data-emoji="🏀">
+                    <div class="dropdown-item" onclick="selectAction('Créer un match', '🏀')">
                         <div class="dropdown-icon">🏀</div>
                         <div class="dropdown-text">Créer un match</div>
                     </div>
-                    <div class="dropdown-item" data-action="Rejoindre une activité" data-emoji="👥">
+                    <div class="dropdown-item" onclick="selectAction('Rejoindre une activité', '👥')">
                         <div class="dropdown-icon blue">👥</div>
                         <div class="dropdown-text">Rejoindre une activité</div>
                     </div>
-                    <div class="dropdown-item" data-action="Activités près de moi" data-emoji="📍">
+                    <div class="dropdown-item" onclick="selectAction('Activités près de moi', '📍')">
                         <div class="dropdown-icon green">📍</div>
                         <div class="dropdown-text">Activités près de moi</div>
                     </div>
-                    <div class="dropdown-item" data-action="Mes statistiques" data-emoji="📊">
+                    <div class="dropdown-item" onclick="selectAction('Mon planning', '📅')">
+                        <div class="dropdown-icon purple">📅</div>
+                        <div class="dropdown-text">Mon planning</div>
+                    </div>
+                    <div class="dropdown-item" onclick="selectAction('Mes statistiques', '📊')">
                         <div class="dropdown-icon purple">📊</div>
                         <div class="dropdown-text">Mes statistiques</div>
                     </div>
-                    <div class="dropdown-item" data-action="Rechercher un sport" data-emoji="🔍">
+                    <div class="dropdown-item" onclick="selectAction('Rechercher un sport', '🔍')">
                         <div class="dropdown-icon">🔍</div>
                         <div class="dropdown-text">Rechercher un sport</div>
+                    </div>
+                </div>
+
+                <div class="chat-conversation" id="chatConversation">
+                    <div id="chatMessages"></div>
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
                     </div>
                 </div>
             </div>
@@ -879,15 +1201,15 @@
             <div class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-number orange" id="activePlayersCount">6</div>
+                        <div class="stat-number orange">6</div>
                         <div class="stat-label">Joueurs actifs</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number blue" id="availableMatchesCount">4</div>
+                        <div class="stat-number blue">4</div>
                         <div class="stat-label">Matchs dispo</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number green" id="fullMatchesCount">2</div>
+                        <div class="stat-number green">2</div>
                         <div class="stat-label">Complets</div>
                     </div>
                 </div>
@@ -896,33 +1218,53 @@
             <div class="big-map-section">
                 <div class="section-title">Aventures à proximité</div>
                 <div class="inline-legend">
-                    <span class="legend-item" data-filter="dispo">🟢 Dispo</span>
-                    <span class="legend-item" data-filter="complet">🔴 Complet</span>
-                    <span class="legend-item" data-filter="moi">🔵 Moi</span>
+                    <span class="legend-item" data-filter="dispo" onclick="toggleFilter('dispo', this)">🟢 Dispo</span>
+                    <span class="legend-item" data-filter="complet" onclick="toggleFilter('complet', this)">🔴 Complet</span>
+                    <span class="legend-item" data-filter="moi" onclick="toggleFilter('moi', this)">🔵 Moi</span>
                 </div>
                 
                 <div class="big-map-container">
-                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" data-activity="basketball">🏀</div>
-                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" data-activity="running">🏃‍♂️</div>
-                    <div class="sport-pin complet" style="top: 35%; left: 85%;" data-activity="yoga">🧘‍♀️</div>
-                    <div class="sport-pin complet" style="top: 75%; left: 55%;" data-activity="tennis">🎾</div>
-                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" data-activity="football">⚽</div>
-                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" data-activity="swimming">🏊‍♀️</div>
+                    <div class="sport-pin disponible" style="top: 25%; left: 65%;" onclick="openDetails('basketball')">🏀</div>
+                    <div class="sport-pin disponible" style="top: 60%; left: 20%;" onclick="openDetails('running')">🏃‍♂️</div>
+                    <div class="sport-pin complet" style="top: 35%; left: 85%;" onclick="openDetails('yoga')">🧘‍♀️</div>
+                    <div class="sport-pin complet" style="top: 75%; left: 55%;" onclick="openDetails('tennis')">🎾</div>
+                    <div class="sport-pin disponible" style="top: 45%; left: 30%;" onclick="openDetails('football')">⚽</div>
+                    <div class="sport-pin disponible" style="top: 20%; left: 40%;" onclick="openDetails('swimming')">🏊‍♀️</div>
+
                     <div class="user-location">📍</div>
                     <div class="pulse-ring"></div>
                 </div>
             </div>
 
+            <!-- BARRE DE NAVIGATION ASSISTANT -->
+            <div class="assistant-nav-bar" id="assistantNavBar">
+                <div class="nav-action-btn" onclick="switchToAction('Mon planning')">
+                    <span class="nav-action-icon">📅</span>
+                </div>
+                <div class="nav-action-btn" onclick="switchToAction('Créer un match')">
+                    <span class="nav-action-icon">🏀</span>
+                </div>
+                <div class="nav-action-btn" onclick="switchToAction('Rejoindre une activité')">
+                    <span class="nav-action-icon">👥</span>
+                </div>
+                <div class="nav-action-btn" onclick="switchToAction('Activités près de moi')">
+                    <span class="nav-action-icon">📍</span>
+                </div>
+                <div class="nav-action-btn" onclick="switchToAction('Mes statistiques')">
+                    <span class="nav-action-icon">📊</span>
+                </div>
+                <div class="nav-action-btn" onclick="switchToAction('Rechercher un sport')">
+                    <span class="nav-action-icon">🔍</span>
+                </div>
+            </div>
+
             <div class="details-section" id="detailsSection">
                 <div class="details-header">
-                    <div class="details-title" id="detailsTitle">Sélectionnez une activité</div>
+                    <div class="details-title" id="detailsTitle">Détails</div>
                     <button class="close-details" id="closeDetails">&times;</button>
                 </div>
                 
                 <div class="details-content" id="detailsContent">
-                    <div class="default-message">
-                        👆 Cliquez sur un pin pour voir les détails de l'activité
-                    </div>
                 </div>
             </div>
         </div>
@@ -933,33 +1275,15 @@
     </div>
 
     <script>
-        const AppConfig = {
-            TYPING_DELAY: 800,
-            MESSAGE_DELAY: 1200,
-            NOTIFICATION_DURATION: 3000,
-            CONVERSATION_TIMEOUT: 1200
-        };
-
-        const AppState = {
-            isDarkMode: false,
-            activeFilter: null,
-            activeDetails: null,
-            isDropdownOpen: false,
-            currentAction: null,
-            conversationStep: 0,
-            isListening: false,
-            userProfile: {
-                avatar: '👤',
-                username: '',
-                age: '',
-                favoriteSport: '',
-                skillLevel: '',
-                bio: '',
-                activitiesJoined: 0,
-                badges: 0,
-                rating: 5.0
-            }
-        };
+        let isDarkMode = false;
+        let activeFilter = null;
+        let activeDetails = null;
+        let isDropdownOpen = false;
+        let currentAction = null;
+        let conversationStep = 0;
+        let currentWeekOffset = 0;
+        let openedActions = []; // Stocke les actions ouvertes
+        let currentActiveAction = null;
 
         const conversations = {
             'Créer un match': [
@@ -987,7 +1311,20 @@
                 { type: 'bot', text: '🏀 Basketball - 400m - 18h30\n🏃‍♂️ Running - 600m - 19h00\n⚽ Football - 800m - 19h00\n🏊‍♀️ Natation - 1.2km - 14h00' },
                 { type: 'user', text: 'Montre-moi le running' },
                 { type: 'bot', text: 'Le Running Club au Parc Central : 12/20 participants, niveau tous niveaux, gratuit. Tu veux rejoindre ?' }
+            ],
+            'Mon planning': [
+                { type: 'bot', text: 'Voici ton planning ! Pour l\'instant tu as 2 activités cette semaine 📅' },
+                { type: 'user', text: 'Lesquelles ?' },
+                { type: 'bot', text: 'Basketball demain à 18h30 et Running jeudi à 19h00. Veux-tu en ajouter d\'autres ?' },
+                { type: 'user', text: 'Oui, yoga ce weekend' },
+                { type: 'bot', text: 'Parfait ! J\'ouvre ton calendrier pour que tu puisses tout visualiser ! 📅✨' }
             ]
+        };
+
+        const calendarEvents = {
+            1: [{ type: 'basketball', icon: '🏀', time: '18:30' }],
+            4: [{ type: 'running', icon: '🏃‍♂️', time: '19:00' }],
+            6: [{ type: 'yoga', icon: '🧘‍♀️', time: '09:00' }]
         };
 
         const activitiesData = {
@@ -1065,415 +1402,563 @@
             }
         };
 
-        const Utils = {
-            getElement: (id) => document.getElementById(id),
+        document.getElementById('darkModeBtn').addEventListener('click', function() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            this.innerHTML = isDarkMode ? '☀️' : '🌙';
+        });
+
+        document.getElementById('assistantTrigger').addEventListener('click', function(e) {
+            if (e.target.closest('.mic-btn-single')) return;
+            e.stopPropagation();
+            toggleDropdown();
+        });
+
+        document.getElementById('dropdownArrow').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+
+        document.getElementById('micButton').addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
             
-            toggleClass: (element, className, condition = null) => {
-                if (condition !== null) {
-                    element.classList.toggle(className, condition);
+            if (currentAction) {
+                startVoiceConversation();
+            } else {
+                toggleDropdown();
+            }
+        });
+
+        document.getElementById('closeDetails').addEventListener('click', function() {
+            closeDetails();
+        });
+
+        // Délégation d'événements pour les boutons de navigation du calendrier
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'prevWeek') {
+                currentWeekOffset--;
+                renderCalendar();
+            } else if (e.target.id === 'nextWeek') {
+                currentWeekOffset++;
+                renderCalendar();
+            }
+        });
+
+        function toggleDropdown() {
+            isDropdownOpen = !isDropdownOpen;
+            const dropdown = document.getElementById('assistantDropdown');
+            const trigger = document.getElementById('assistantTrigger');
+            
+            if (isDropdownOpen) {
+                dropdown.classList.add('show');
+                trigger.classList.add('open');
+            } else {
+                dropdown.classList.remove('show');
+                trigger.classList.remove('open');
+            }
+        }
+
+        function selectAction(actionText, emoji) {
+            const assistantText = document.getElementById('assistantText');
+            const actionIcon = document.getElementById('actionIcon');
+            const trigger = document.getElementById('assistantTrigger');
+            
+            assistantText.textContent = actionText;
+            currentAction = actionText;
+            
+            const colors = {
+                'Créer un match': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+                'Rejoindre une activité': 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+                'Activités près de moi': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                'Mon planning': 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+                'Mes statistiques': 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+                'Rechercher un sport': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)'
+            };
+            
+            actionIcon.textContent = emoji;
+            actionIcon.style.background = colors[actionText];
+            trigger.classList.add('selected');
+            
+            document.getElementById('assistantDropdown').classList.remove('show');
+            trigger.classList.remove('open');
+            isDropdownOpen = false;
+        }
+
+        function startVoiceConversation() {
+            if (!conversations[currentAction]) {
+                alert('Fonction en développement...');
+                return;
+            }
+
+            conversationStep = 0;
+            const trigger = document.getElementById('assistantTrigger');
+            const micBtn = document.getElementById('micButton');
+            const conversation = document.getElementById('chatConversation');
+            const messagesContainer = document.getElementById('chatMessages');
+            
+            messagesContainer.innerHTML = '';
+            trigger.classList.add('listening');
+            micBtn.classList.add('listening');
+            conversation.classList.add('show');
+            
+            setTimeout(processConversation, 1000);
+        }
+
+        function processConversation() {
+            const conversationData = conversations[currentAction];
+            
+            if (conversationStep >= conversationData.length) {
+                finishConversation();
+                return;
+            }
+            
+            const currentMessage = conversationData[conversationStep];
+            
+            if (currentMessage.type === 'bot') {
+                showTyping();
+                setTimeout(() => {
+                    hideTyping();
+                    addMessage(currentMessage.type, currentMessage.text);
+                    conversationStep++;
+                    setTimeout(processConversation, 1200);
+                }, 800);
+            } else {
+                setTimeout(() => {
+                    addMessage(currentMessage.type, currentMessage.text);
+                    conversationStep++;
+                    setTimeout(processConversation, 800);
+                }, 600);
+            }
+        }
+
+        function showTyping() {
+            document.getElementById('typingIndicator').classList.add('show');
+        }
+
+        function hideTyping() {
+            document.getElementById('typingIndicator').classList.remove('show');
+        }
+
+        function addMessage(type, text) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const message = document.createElement('div');
+            message.className = `chat-message ${type}`;
+            message.textContent = text;
+            messagesContainer.appendChild(message);
+            
+            const conversation = document.getElementById('chatConversation');
+            conversation.scrollTop = conversation.scrollHeight;
+        }
+
+        function finishConversation() {
+            const trigger = document.getElementById('assistantTrigger');
+            const micBtn = document.getElementById('micButton');
+            
+            trigger.classList.remove('listening');
+            micBtn.classList.remove('listening');
+            
+            setTimeout(() => {
+                document.getElementById('chatConversation').classList.remove('show');
+                
+                // Marquer l'action comme ouverte
+                if (!openedActions.includes(currentAction)) {
+                    openedActions.push(currentAction);
+                }
+                
+                updateNavBar();
+                
+                if (currentAction === 'Mon planning') {
+                    setTimeout(() => {
+                        openCalendar();
+                    }, 300);
                 } else {
-                    element.classList.toggle(className);
+                    setTimeout(() => {
+                        openActionContent(currentAction);
+                    }, 300);
                 }
-            },
+            }, 1200);
+        }
 
-            updateStats: () => {
-                const availableCount = Object.values(activitiesData).filter(a => !a.isComplete).length;
-                const fullCount = Object.values(activitiesData).filter(a => a.isComplete).length;
-                const totalParticipants = Object.values(activitiesData).reduce((sum, a) => sum + a.participants, 0);
-
-                Utils.getElement('activePlayersCount').textContent = totalParticipants;
-                Utils.getElement('availableMatchesCount').textContent = availableCount;
-                Utils.getElement('fullMatchesCount').textContent = fullCount;
-            }
-        };
-
-        const ProfileManager = {
-            init() {
-                const profileAvatar = Utils.getElement('profileAvatar');
-                profileAvatar?.addEventListener('click', this.showSimpleAlert.bind(this));
-                this.loadProfile();
-            },
-
-            showSimpleAlert() {
-                alert('Fonctionnalité de profil en cours de développement !');
-            },
-
-            loadProfile() {
-                try {
-                    const saved = localStorage.getItem('sporly_profile');
-                    if (saved) {
-                        const profile = JSON.parse(saved);
-                        AppState.userProfile = { ...AppState.userProfile, ...profile };
-                        this.updateUI();
-                    }
-                } catch (error) {
-                    console.warn('Impossible de charger le profil:', error);
-                }
-            },
-
-            updateUI() {
-                const profile = AppState.userProfile;
-                const profileAvatar = Utils.getElement('profileAvatar');
-                const profileName = Utils.getElement('profileName');
+        function updateNavBar() {
+            const allButtons = document.querySelectorAll('.nav-action-btn');
+            
+            allButtons.forEach(btn => {
+                const action = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
                 
-                if (profileAvatar) {
-                    profileAvatar.textContent = profile.avatar;
-                    if (profile.avatarStyle) {
-                        profileAvatar.style.background = profile.avatarStyle;
-                    }
-                }
-
-                if (profileName) {
-                    if (profile.username && profile.username.trim() !== '') {
-                        profileName.textContent = `Salut ${profile.username}`;
-                        profileName.style.display = 'block';
-                    } else {
-                        profileName.style.display = 'none';
-                    }
-                }
-            },
-
-            incrementActivities() {
-                AppState.userProfile.activitiesJoined += 1;
-                this.saveToStorage();
-            },
-
-            saveToStorage() {
-                try {
-                    const data = JSON.stringify(AppState.userProfile);
-                    localStorage.setItem('sporly_profile', data);
-                } catch (error) {
-                    console.warn('Impossible de sauvegarder le profil:', error);
-                }
-            },
-
-            getDisplayName() {
-                return AppState.userProfile.username || 'Joueur';
-            }
-        };
-
-        const DarkModeManager = {
-            init() {
-                const darkModeBtn = Utils.getElement('darkModeBtn');
-                darkModeBtn?.addEventListener('click', this.toggle.bind(this));
-            },
-
-            toggle() {
-                AppState.isDarkMode = !AppState.isDarkMode;
-                Utils.toggleClass(document.body, 'dark-mode', AppState.isDarkMode);
-                Utils.getElement('darkModeBtn').innerHTML = AppState.isDarkMode ? '☀️' : '🌙';
-            }
-        };
-
-        const ConversationManager = {
-            init() {
-                const assistantTrigger = Utils.getElement('assistantTrigger');
-                const dropdownArrow = Utils.getElement('dropdownArrow');
-                const micButton = Utils.getElement('micButton');
-
-                assistantTrigger?.addEventListener('click', this.handleTriggerClick.bind(this));
-                dropdownArrow?.addEventListener('click', this.handleDropdownClick.bind(this));
-                micButton?.addEventListener('click', this.handleMicClick.bind(this));
-
-                const dropdown = Utils.getElement('assistantDropdown');
-                dropdown?.addEventListener('click', this.handleDropdownItemClick.bind(this));
-            },
-
-            handleTriggerClick(e) {
-                if (e.target.closest('.mic-btn-single')) return;
-                e.stopPropagation();
-                this.toggleDropdown();
-            },
-
-            handleDropdownClick(e) {
-                e.stopPropagation();
-                this.toggleDropdown();
-            },
-
-            handleMicClick(e) {
-                e.stopPropagation();
-                e.preventDefault();
+                // Retirer toutes les classes
+                btn.classList.remove('active', 'opened');
                 
-                if (AppState.currentAction && !AppState.isListening) {
-                    alert('Conversation vocale en développement !');
-                } else {
-                    this.toggleDropdown();
+                if (currentActiveAction === action) {
+                    // Action actuellement affichée = active (surbrillance)
+                    btn.classList.add('active');
+                } else if (openedActions.includes(action)) {
+                    // Action déjà ouverte = opened (semi-transparent)
+                    btn.classList.add('opened');
                 }
-            },
+                // Sinon = opacité par défaut (très transparent)
+            });
+        }
 
-            handleDropdownItemClick(e) {
-                const item = e.target.closest('.dropdown-item');
-                if (!item) return;
-
-                const actionText = item.dataset.action;
-                const emoji = item.dataset.emoji;
-                
-                if (actionText && emoji) {
-                    this.selectAction(actionText, emoji);
-                }
-            },
-
-            toggleDropdown() {
-                AppState.isDropdownOpen = !AppState.isDropdownOpen;
-                const dropdown = Utils.getElement('assistantDropdown');
-                const trigger = Utils.getElement('assistantTrigger');
-                
-                Utils.toggleClass(dropdown, 'show', AppState.isDropdownOpen);
-                Utils.toggleClass(trigger, 'open', AppState.isDropdownOpen);
-            },
-
-            selectAction(actionText, emoji) {
-                const assistantText = Utils.getElement('assistantText');
-                const actionIcon = Utils.getElement('actionIcon');
-                const trigger = Utils.getElement('assistantTrigger');
-                
-                assistantText.textContent = actionText;
-                AppState.currentAction = actionText;
-                
-                const colors = {
-                    'Créer un match': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
-                    'Rejoindre une activité': 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-                    'Activités près de moi': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                    'Mes statistiques': 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
-                    'Rechercher un sport': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)'
+        function switchToAction(action) {
+            // Si l'action n'a jamais été ouverte, démarrer la conversation
+            if (!openedActions.includes(action)) {
+                // Simuler la sélection dans l'assistant
+                const actionEmojis = {
+                    'Mon planning': '📅',
+                    'Créer un match': '🏀',
+                    'Rejoindre une activité': '👥',
+                    'Activités près de moi': '📍',
+                    'Mes statistiques': '📊',
+                    'Rechercher un sport': '🔍'
                 };
                 
-                actionIcon.textContent = emoji;
-                actionIcon.style.background = colors[actionText] || colors['Créer un match'];
-                
-                trigger.classList.add('selected');
-                Utils.getElement('assistantDropdown').classList.remove('show');
-                trigger.classList.remove('open');
-                AppState.isDropdownOpen = false;
+                selectAction(action, actionEmojis[action]);
+                startVoiceConversation();
+                return;
             }
-        };
-
-        const FilterManager = {
-            init() {
-                const legendItems = document.querySelectorAll('.legend-item');
-                legendItems.forEach(item => {
-                    item.addEventListener('click', this.handleFilterClick.bind(this));
-                });
-            },
-
-            handleFilterClick(e) {
-                const filterType = e.currentTarget.dataset.filter;
-                if (!filterType) return;
-
-                const mapContainer = document.querySelector('.big-map-container');
-                const allLegendItems = document.querySelectorAll('.legend-item');
-                
-                if (AppState.activeFilter === filterType) {
-                    mapContainer.className = 'big-map-container';
-                    e.currentTarget.classList.remove('active');
-                    AppState.activeFilter = null;
-                    return;
-                }
-                
-                allLegendItems.forEach(item => item.classList.remove('active'));
-                
-                AppState.activeFilter = filterType;
-                e.currentTarget.classList.add('active');
-                mapContainer.className = `big-map-container filter-${filterType}`;
+            
+            // Sinon, basculer vers le contenu existant
+            currentActiveAction = action;
+            updateNavBar();
+            
+            // Toujours ouvrir le contenu même si la section est fermée
+            if (action === 'Mon planning') {
+                openCalendar();
+            } else {
+                openActionContent(action);
             }
-        };
-
-        const DetailsManager = {
-            init() {
-                const sportPins = document.querySelectorAll('.sport-pin');
-                sportPins.forEach(pin => {
-                    pin.addEventListener('click', this.handlePinClick.bind(this));
-                });
-
-                Utils.getElement('closeDetails')?.addEventListener('click', this.closeDetails.bind(this));
-                
-                document.addEventListener('click', this.handleOutsideClick.bind(this));
-            },
-
-            handlePinClick(e) {
-                const activityId = e.currentTarget.dataset.activity;
-                if (activityId) {
-                    this.openDetails(activityId);
-                }
-            },
-
-            handleOutsideClick(e) {
-                if (AppState.activeDetails && 
-                    !e.target.closest('.details-section') && 
-                    !e.target.closest('.sport-pin')) {
-                    this.closeDetails();
-                }
-            },
-
-            openDetails(activityId) {
-                const activity = activitiesData[activityId];
-                if (!activity) return;
-
-                const detailsSection = Utils.getElement('detailsSection');
-                const detailsTitle = Utils.getElement('detailsTitle');
-                const detailsContent = Utils.getElement('detailsContent');
-
-                if (!detailsSection || !detailsTitle || !detailsContent) return;
-
-                detailsTitle.textContent = activity.name;
-
-                detailsContent.innerHTML = `
-                    <div class="activity-details">
-                        <div class="activity-header">
-                            <div class="activity-icon ${activity.isComplete ? 'complet' : ''}">
-                                ${activity.icon}
-                            </div>
-                            <div class="activity-info">
-                                <h3>${activity.name}</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">📍 ${activity.location}</span>
-                                    <span class="meta-item">⏰ ${activity.time}</span>
-                                    <span class="meta-item">👥 ${activity.participants}/${activity.maxParticipants} joueurs</span>
-                                    <span class="meta-item">🎯 ${activity.level}</span>
-                                    <span class="meta-item">💰 ${activity.price}</span>
-                                    <span class="meta-item">🎽 ${activity.equipment}</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="details-actions">
-                            ${activity.isComplete ? 
-                                `<button class="detail-btn compact-btn waitlist-detail-btn" data-action="waitlist" data-activity="${activityId}">📝 Liste d'attente</button>` :
-                                `<button class="detail-btn join-detail-btn" data-action="join" data-activity="${activityId}">🚀 Rejoindre maintenant</button>`
-                            }
-                        </div>
-                    </div>
-                `;
-
-                const actionButtons = detailsContent.querySelectorAll('[data-action]');
-                actionButtons.forEach(btn => {
-                    btn.addEventListener('click', this.handleActionClick.bind(this));
-                });
-
-                detailsSection.classList.add('active');
-                AppState.activeDetails = activityId;
-
-                detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            },
-
-            handleActionClick(e) {
-                const action = e.currentTarget.dataset.action;
-                const activityId = e.currentTarget.dataset.activity;
-
-                if (action === 'join') {
-                    ActivityManager.joinActivity(activityId);
-                } else if (action === 'waitlist') {
-                    ActivityManager.joinWaitlist(activityId);
-                }
-            },
-
-            closeDetails() {
-                const detailsSection = Utils.getElement('detailsSection');
-                const detailsTitle = Utils.getElement('detailsTitle');
-                const detailsContent = Utils.getElement('detailsContent');
-
-                if (!detailsSection || !detailsTitle || !detailsContent) return;
-
-                detailsSection.classList.remove('active');
-                detailsTitle.textContent = 'Sélectionnez une activité';
-                detailsContent.innerHTML = `
-                    <div class="default-message">
-                        👆 Cliquez sur un pin pour voir les détails de l'activité
-                    </div>
-                `;
-                
-                AppState.activeDetails = null;
-            }
-        };
-
-        const ActivityManager = {
-            joinActivity(activityId) {
-                const activity = activitiesData[activityId];
-                if (!activity || activity.isComplete) return;
-
-                activity.participants += 1;
-                
-                if (activity.participants >= activity.maxParticipants) {
-                    activity.isComplete = true;
-                    const pin = document.querySelector(`[data-activity="${activityId}"]`);
-                    if (pin) {
-                        pin.classList.add('complet');
-                        pin.classList.remove('disponible');
-                    }
-                }
-
-                Utils.updateStats();
-
-                NotificationManager.show(`🎉 ${ProfileManager.getDisplayName()} a rejoint ${activity.name} !`);
-                
-                ProfileManager.incrementActivities();
-                
-                DetailsManager.closeDetails();
-            },
-
-            joinWaitlist(activityId) {
-                const activity = activitiesData[activityId];
-                if (!activity) return;
-
-                NotificationManager.show(`📝 Tu es ajouté à la liste d'attente pour ${activity.name} !`);
-                DetailsManager.closeDetails();
-            }
-        };
-
-        const NotificationManager = {
-            show(message, type = 'success') {
-                const notification = Utils.getElement('joinNotification');
-                const text = Utils.getElement('notificationText');
-                
-                if (!notification || !text) return;
-                
-                text.textContent = message;
-                notification.classList.add('show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, AppConfig.NOTIFICATION_DURATION);
-            }
-        };
-
-        const EventManager = {
-            init() {
-                document.addEventListener('click', this.handleGlobalClick.bind(this));
-            },
-
-            handleGlobalClick(event) {
-                if (AppState.isDropdownOpen && 
-                    !event.target.closest('.assistant-container')) {
-                    ConversationManager.toggleDropdown();
-                }
-            }
-        };
-
-        const App = {
-            init() {
-                try {
-                    ProfileManager.init();
-                    DarkModeManager.init();
-                    ConversationManager.init();
-                    FilterManager.init();
-                    DetailsManager.init();
-                    EventManager.init();
-
-                    Utils.updateStats();
-
-                    console.log('🎯 Sporly chargé avec succès !');
-
-                } catch (error) {
-                    console.error('Erreur lors de l\'initialisation:', error);
-                }
-            }
-        };
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', App.init);
-        } else {
-            App.init();
         }
+
+        function openActionContent(action) {
+            const detailsSection = document.getElementById('detailsSection');
+            const detailsTitle = document.getElementById('detailsTitle');
+            const detailsContent = document.getElementById('detailsContent');
+            
+            currentActiveAction = action;
+            
+            const actionIcons = {
+                'Créer un match': '🏀',
+                'Rejoindre une activité': '👥',
+                'Activités près de moi': '📍',
+                'Mes statistiques': '📊',
+                'Rechercher un sport': '🔍'
+            };
+            
+            detailsTitle.textContent = `${actionIcons[action]} ${action}`;
+            
+            // Contenu de démonstration pour chaque action
+            const actionContent = {
+                'Créer un match': `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px;">🏀 Nouveau Match Basketball</h3>
+                        <p style="color: #64748b; font-size: 12px; margin-bottom: 10px;">Match créé avec succès !</p>
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-radius: 8px; font-size: 11px;">
+                            📍 Terrain Municipal<br>
+                            ⏰ Aujourd'hui 18h30<br>
+                            👥 10 joueurs max<br>
+                            🎯 Niveau Intermédiaire
+                        </div>
+                    </div>
+                `,
+                'Rejoindre une activité': `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px;">👥 Activités Disponibles</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="background: rgba(16, 185, 129, 0.1); padding: 8px; border-radius: 6px; font-size: 11px;">
+                                🏀 Basketball - 4 places libres
+                            </div>
+                            <div style="background: rgba(16, 185, 129, 0.1); padding: 8px; border-radius: 6px; font-size: 11px;">
+                                🏃‍♂️ Running - 8 places libres
+                            </div>
+                            <div style="background: rgba(16, 185, 129, 0.1); padding: 8px; border-radius: 6px; font-size: 11px;">
+                                ⚽ Football - 12 places libres
+                            </div>
+                        </div>
+                    </div>
+                `,
+                'Activités près de moi': `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px;">📍 À Proximité</h3>
+                        <div style="font-size: 11px; color: #64748b;">
+                            🏀 Basketball - 400m<br>
+                            🏃‍♂️ Running - 600m<br>
+                            ⚽ Football - 800m<br>
+                            🏊‍♀️ Natation - 1.2km
+                        </div>
+                    </div>
+                `,
+                'Mes statistiques': `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px;">📊 Tes Stats</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px;">
+                            <div style="background: rgba(249, 115, 22, 0.1); padding: 8px; border-radius: 6px;">
+                                <div style="font-weight: bold;">12</div>
+                                <div>Matchs joués</div>
+                            </div>
+                            <div style="background: rgba(16, 185, 129, 0.1); padding: 8px; border-radius: 6px;">
+                                <div style="font-weight: bold;">8h</div>
+                                <div>Cette semaine</div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                'Rechercher un sport': `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px;">🔍 Recherche</h3>
+                        <div style="background: #f8fafc; padding: 10px; border-radius: 8px; font-size: 11px; color: #64748b;">
+                            Tapez le nom d'un sport pour trouver des activités près de chez vous...
+                        </div>
+                    </div>
+                `
+            };
+            
+            detailsContent.innerHTML = actionContent[action] || '<p>Contenu en développement...</p>';
+            detailsSection.classList.add('active');
+            updateNavBar();
+        }
+
+        function toggleFilter(filterType, element) {
+            const mapContainer = document.querySelector('.big-map-container');
+            const allLegendItems = document.querySelectorAll('.legend-item');
+            
+            if (activeFilter === filterType) {
+                mapContainer.className = 'big-map-container';
+                element.classList.remove('active');
+                activeFilter = null;
+                return;
+            }
+            
+            allLegendItems.forEach(item => item.classList.remove('active'));
+            
+            activeFilter = filterType;
+            element.classList.add('active');
+            mapContainer.className = `big-map-container filter-${filterType}`;
+        }
+
+        function openDetails(activityId) {
+            const activity = activitiesData[activityId];
+            if (!activity) return;
+
+            const detailsSection = document.getElementById('detailsSection');
+            const detailsTitle = document.getElementById('detailsTitle');
+            const detailsContent = document.getElementById('detailsContent');
+
+            detailsTitle.textContent = activity.name;
+
+            detailsContent.innerHTML = `
+                <div class="activity-details">
+                    <div class="activity-header">
+                        <div class="activity-icon ${activity.isComplete ? 'complet' : ''}">
+                            ${activity.icon}
+                        </div>
+                        <div class="activity-info">
+                            <h3>${activity.name}</h3>
+                            <div class="activity-meta">
+                                <span class="meta-item">📍 ${activity.location}</span>
+                                <span class="meta-item">⏰ ${activity.time}</span>
+                                <span class="meta-item">👥 ${activity.participants}/${activity.maxParticipants} joueurs</span>
+                                <span class="meta-item">🎯 ${activity.level}</span>
+                                <span class="meta-item">💰 ${activity.price}</span>
+                                <span class="meta-item">🎽 ${activity.equipment}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-actions">
+                        ${activity.isComplete ? 
+                            `<button class="detail-btn compact-btn waitlist-detail-btn" onclick="joinWaitlist('${activityId}')">📝 Liste d'attente</button>` :
+                            `<button class="detail-btn join-detail-btn" onclick="joinActivity('${activityId}')">🚀 Rejoindre maintenant</button>`
+                        }
+                    </div>
+                </div>
+            `;
+
+            detailsSection.classList.add('active');
+            activeDetails = activityId;
+            detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeDetails() {
+            const detailsSection = document.getElementById('detailsSection');
+            detailsSection.classList.remove('active');
+            activeDetails = null;
+            // NE PAS remettre currentActiveAction à null pour garder l'état
+            updateNavBar();
+        }
+
+        function openCalendar() {
+            const detailsSection = document.getElementById('detailsSection');
+            const detailsTitle = document.getElementById('detailsTitle');
+            const detailsContent = document.getElementById('detailsContent');
+            
+            currentActiveAction = 'Mon planning';
+            
+            detailsTitle.textContent = '📅 Mon Planning';
+            
+            detailsContent.innerHTML = `
+                <div class="calendar-nav">
+                    <button class="nav-btn" id="prevWeek">‹</button>
+                    <div class="week-title" id="weekTitle">Cette semaine</div>
+                    <button class="nav-btn" id="nextWeek">›</button>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                </div>
+                
+                <div class="calendar-summary">
+                    <div class="summary-stats">
+                        <span class="summary-item">
+                            <span class="summary-icon">🏃‍♂️</span>
+                            <span class="summary-text">3 activités cette semaine</span>
+                        </span>
+                        <span class="summary-item">
+                            <span class="summary-icon">⏰</span>
+                            <span class="summary-text">5h de sport prévues</span>
+                        </span>
+                    </div>
+                </div>
+            `;
+            
+            detailsSection.classList.add('active');
+            renderCalendar();
+            updateNavBar();
+            detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeCalendar() {
+            closeDetails();
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const weekTitle = document.getElementById('weekTitle');
+            
+            const today = new Date();
+            const currentWeek = new Date(today);
+            currentWeek.setDate(today.getDate() + (currentWeekOffset * 7));
+            
+            const monday = new Date(currentWeek);
+            const dayOfWeek = currentWeek.getDay();
+            const daysToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+            monday.setDate(currentWeek.getDate() + daysToMonday);
+            
+            const weekEndDate = new Date(monday);
+            weekEndDate.setDate(monday.getDate() + 6);
+            
+            if (currentWeekOffset === 0) {
+                weekTitle.textContent = 'Cette semaine';
+            } else if (currentWeekOffset === 1) {
+                weekTitle.textContent = 'Semaine prochaine';
+            } else if (currentWeekOffset === -1) {
+                weekTitle.textContent = 'Semaine dernière';
+            } else {
+                weekTitle.textContent = `${monday.getDate()}/${monday.getMonth() + 1} - ${weekEndDate.getDate()}/${weekEndDate.getMonth() + 1}`;
+            }
+            
+            grid.innerHTML = '';
+            const dayNames = ['LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM', 'DIM'];
+            
+            for (let i = 0; i < 7; i++) {
+                const dayDate = new Date(monday);
+                dayDate.setDate(monday.getDate() + i);
+                
+                const dayColumn = document.createElement('div');
+                dayColumn.className = 'day-column';
+                
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'day-header';
+                dayHeader.textContent = dayNames[i];
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = dayDate.getDate();
+                
+                const isToday = dayDate.toDateString() === today.toDateString();
+                if (isToday) {
+                    dayNumber.classList.add('today');
+                }
+                
+                const dayIndex = i + 1;
+                const hasEvents = calendarEvents[dayIndex] && currentWeekOffset === 0;
+                if (hasEvents) {
+                    dayNumber.classList.add('has-events');
+                }
+                
+                const dayEvents = document.createElement('div');
+                dayEvents.className = 'day-events';
+                
+                if (hasEvents) {
+                    calendarEvents[dayIndex].forEach(event => {
+                        const eventDot = document.createElement('div');
+                        eventDot.className = `event-dot ${event.type}`;
+                        eventDot.textContent = event.icon;
+                        eventDot.title = `${event.icon} ${event.time}`;
+                        dayEvents.appendChild(eventDot);
+                    });
+                }
+                
+                dayColumn.appendChild(dayHeader);
+                dayColumn.appendChild(dayNumber);
+                dayColumn.appendChild(dayEvents);
+                grid.appendChild(dayColumn);
+            }
+        }
+
+        function joinActivity(activityId) {
+            const activity = activitiesData[activityId];
+            if (!activity || activity.isComplete) return;
+
+            activity.participants += 1;
+            
+            if (activity.participants >= activity.maxParticipants) {
+                activity.isComplete = true;
+                const pin = document.querySelector(`[onclick*="${activityId}"]`);
+                pin.classList.add('complet');
+                pin.classList.remove('disponible');
+            }
+
+            showNotification(`🎉 Tu as rejoint ${activity.name} !`);
+            closeDetails();
+        }
+
+        function joinWaitlist(activityId) {
+            const activity = activitiesData[activityId];
+            showNotification(`📝 Tu es ajouté à la liste d'attente pour ${activity.name} !`);
+            closeDetails();
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('joinNotification');
+            const text = document.getElementById('notificationText');
+            
+            text.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.assistant-container') && document.getElementById('chatConversation').classList.contains('show')) {
+                document.getElementById('chatConversation').classList.remove('show');
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (document.getElementById('detailsSection').classList.contains('active') && 
+                !e.target.closest('.details-section') && 
+                !e.target.closest('.sport-pin') &&
+                !e.target.closest('.assistant-container') &&
+                !e.target.closest('.nav-action-btn')) {
+                closeDetails();
+            }
+        });
+
+        console.log('🎯 Sporly - Version avec Calendrier !');
+        console.log('✅ Calendrier intégré après conversation "Mon planning"');
+        console.log('📅 Navigation semaine par semaine avec événements');
     </script>
 </body>
 </html>
